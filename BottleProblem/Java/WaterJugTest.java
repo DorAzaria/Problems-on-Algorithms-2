@@ -1,4 +1,4 @@
-package BottleProblem;
+package BottleProblem.Java;
 
 import org.junit.jupiter.api.Test;
 

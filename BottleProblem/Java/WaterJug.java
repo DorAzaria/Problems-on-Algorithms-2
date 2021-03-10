@@ -1,4 +1,4 @@
-package BottleProblem;
+package BottleProblem.Java;
 
 public class WaterJug {
 
