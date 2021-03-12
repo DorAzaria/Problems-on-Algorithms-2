@@ -1,6 +1,5 @@
 package FloydWarshall.Java;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -8,40 +7,13 @@ import java.util.Vector;
  * Floyd-Warshall Algorithm for unweighted undirected graphs
  */
 public class FW_Boolean {
-    static int testcounter = 1;
     boolean[][] matrix;
 
     public FW_Boolean(boolean[][] matrix) {
         this.matrix = matrix;
-        testManager();
     }
+/******************************** 1. ALGORITHM ****************************************/
 
-    private void testManager() {
-        System.out.println("\n***************** Test "+testcounter+" *******************************8");
-        testcounter++;
-        long start = System.currentTimeMillis();
-        System.out.println("O(N^3) Generate matrix: ");
-        FloydWarshall();
-        System.out.println("\nO(N^2) Is the graph connected?: " + checkConnectivity());
-        System.out.println("O(N) Is the graph connected?: " + checkConnectivityOpt());
-        System.out.println("O(N^2) Number of components: "+ getNumberOfComponents());
-        System.out.println("O(N^2) Show all components: ");
-        HashMap<Integer,Vector<Integer>> components = getComponents();
-        long end = System.currentTimeMillis();
-        long time = end - start;
-        int componentCounter = 1;
-        for(Vector<Integer> vector : components.values()) {
-            System.out.println("\tComponent #"+componentCounter);
-            System.out.print("\t\t");
-            for(Integer num : vector) {
-                System.out.print("V"+num + " ");
-            }
-            System.out.println();
-            componentCounter++;
-        }
-
-        System.out.println("## TOTAL TIME: "+time+"ms.");
-    }
     /**
      * Floyd-Warshall Algorithm (Boolean)
      * Time Complexity - O(V^3)
@@ -56,7 +28,7 @@ public class FW_Boolean {
         }
         printMatrix();
     }
-/********************************************************************************************/
+/******************************** 2. CONNECTIVITY ****************************************/
     /**
      * 1st method - O(V^2)
      * @return true if the graph is connected
@@ -71,7 +43,7 @@ public class FW_Boolean {
         }
         return true;
     }
-/********************************************************************************************/
+
     /**
      * 2nd method - O(V)
      * @return true if the graph is connected
@@ -84,7 +56,8 @@ public class FW_Boolean {
         }
         return true;
     }
-/********************************************************************************************/
+
+/*********************************** 3. COMPONENTS *************************************/
     /**
      * Time Complexity - O(V^2)
      * @return an array that represent the components
@@ -107,7 +80,6 @@ public class FW_Boolean {
         return check;
     }
 
-/********************************************************************************************/
     /**
      * Time Complexity - O(V^2)
      * @return the number of components
@@ -122,7 +94,6 @@ public class FW_Boolean {
     }
     return max;
 }
-/********************************************************************************************/
     /**
      * Time Complexity - O(V^2)
      * @return an HashMap that contains the components in Vectors.
@@ -138,21 +109,91 @@ public class FW_Boolean {
     }
     return components;
 }
+/*********************************** 4. Path between V1 to V2 *************************************/
+public boolean checkPath(int v1, int v2) {
+    HashMap<Integer,Vector<Integer>> map = getComponents();
+    int check = 0;
+
+    for(Vector<Integer> vec : map.values()) {
+        for(Integer num : vec) {
+            if(v1 == num) {
+                check++;
+            }
+            if(v2 == num) {
+                check++;
+            }
+        }
+        if(check == 2) {
+            return true;
+        }
+        check = 0;
+    }
+    return false;
+}
+
+/*********************************** 5. ARRANGE MATRIX *************************************/
+
+    public void ReArrangeMat() {
+        ReArrangeCols();
+        Transpose();
+        ReArrangeCols();
+        printMatrix();
+    }
+
+    private void ReArrangeCols() {
+        int start = 0, end , row = 0;
+        while (start<matrix.length-1) {
+            row = start;
+            end = matrix.length-1;
+            while(start<end) {
+                while(start < matrix.length && matrix[row][start])
+                    start++;
+                if (start == matrix.length) {
+                    return;
+                }
+                while(!matrix[row][end])
+                    end--;
+                for (int i = 0; i < matrix.length; i++) {
+                    SwapCols(i, start, end);
+
+                }
+                start++;
+                end--;
+            }
+        }
+    }
+
+    private void SwapCols( int i, int start, int end) {
+        boolean temp;
+        temp = matrix[i][start];
+        matrix[i][start] = matrix[i][end];
+        matrix[i][end] = temp;
+    }
+
+    private void Transpose() {
+        boolean temp;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = i+1; j < matrix.length; j++) {
+                temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+    }
+
 /********************************************************************************************/
     private void printMatrix() {
-        System.out.println(Arrays.deepToString(matrix)
-                .replace("],","\n").replace(",","\t| ")
-                .replaceAll("[\\[\\]]", " "));
-    }
-/********************************************************************************************/
-    public static void main(String[] args) {
-        FW_Boolean fw1 = new FW_Boolean(FW_Tests.booleanT1());
-        FW_Boolean fw2 = new FW_Boolean(FW_Tests.booleanT2());
-        FW_Boolean fw3 = new FW_Boolean(FW_Tests.booleanT3());
-        FW_Boolean fw4 = new FW_Boolean(FW_Tests.booleanT4());
-        FW_Boolean fw5 = new FW_Boolean(FW_Tests.booleanT5());
-        FW_Boolean fw6 = new FW_Boolean(FW_Tests.booleanT6());
-        FW_Boolean fw7 = new FW_Boolean(FW_Tests.booleanT7());
-        FW_Boolean fw8 = new FW_Boolean(FW_Tests.booleanT8());
+        System.out.println();
+        for(int i = 0 ; i < matrix.length; i++) {
+            for(int j = 0 ; j < matrix.length; j++) {
+                if(matrix[i][j]) {
+                    System.out.print("1  ");
+                } else {
+                    System.out.print("0  ");
+                }
+            }
+            System.out.println();
+        }
+
     }
 }
