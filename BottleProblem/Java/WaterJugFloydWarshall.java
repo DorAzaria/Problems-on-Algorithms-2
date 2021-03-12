@@ -34,14 +34,18 @@ public class WaterJugFloydWarshall {
                 h[index][index(Math.max(0,i+j- b2),Math.min(b2,i+j))] = 1;
                 h[index][index(Math.min(i+j, b1),Math.max(0,i+j- b1))] = 1;
 
-                paths[index][index(i,0)] = "("+i+","+j+")->("+i+","+0+")";
-                paths[index][index(0,j)] = "("+i+","+j+")->("+0+","+j+")";
-                paths[index][index(b1,j)] = "("+i+","+j+")->("+ b1 +","+j+")";
-                paths[index][index(i, b2)] = "("+i+","+j+")->("+i+","+ b2 +")";
-                paths[index][index(Math.max(0,i+j- b2),Math.min(b2,i+j))] = "("+i+","+j+")->("+Math.max(0,i+j- b2)+","+Math.min(b2,i+j)+")";
-                paths[index][index(Math.min(i+j, b1),Math.max(0,i+j- b1))] = "("+i+","+j+")->("+Math.min(i+j, b1)+","+Math.max(0,i+j- b1)+")";
+                generatePath(i,j,i,0);
+                generatePath(i,j,0,j);
+                generatePath(i,j,b1,j);
+                generatePath(i,j,i,b2);
+                generatePath(i,j,Math.max(0,i+j- b2), Math.min(b2,i+j));
+                generatePath(i,j,Math.min(i+j, b1), Math.max(0,i+j- b1));
             }
         }
+    }
+
+    public void generatePath(int i1, int j1, int i2, int j2) {
+        paths[index(i1,j1)][index(i2,j2)] = "("+i1+","+j1+")->("+i2+","+j2+")";
     }
 
     private void FW_Bottle() {
