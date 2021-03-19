@@ -116,18 +116,35 @@ public class FW_Tests {
         return mat;
     }
 
-    public static void main(String[] args) {
-        testManager(new FW_Boolean(booleanT1()));
-        testManager(new FW_Boolean(booleanT2()));
-        testManager(new FW_Boolean(booleanT3()));
-        testManager(new FW_Boolean(booleanT4()));
-        testManager(new FW_Boolean(booleanT5()));
-        testManager(new FW_Boolean(booleanT6()));
-        testManager(new FW_Boolean(booleanT7()));
-        testManager(new FW_Boolean(booleanT8()));
+    public static boolean[][] booleanT9() {
+        boolean T = true, F = false;
+        boolean[][] mat= {
+                {T, F, F, T, F, T, F},
+                {F, T, T, F, T, F, T},
+                {F, T, T, F, T, F, T},
+                {T, F, F, T, F, T, F},
+                {F, T, T, F, T, F, T},
+                {T, F, F, T, F, T, F},
+                {F, T, T, F, T, F, T}};
+        return mat;
+    }
 
-        FW_Boolean fw_boolean = new FW_Boolean(booleanT8());
-        fw_boolean.FloydWarshall();
+    public static void main(String[] args) {
+//        testManager(new FW_Boolean(booleanT1()));
+//        testManager(new FW_Boolean(booleanT2()));
+//        testManager(new FW_Boolean(booleanT3()));
+//        testManager(new FW_Boolean(booleanT4()));
+//        testManager(new FW_Boolean(booleanT5()));
+//        testManager(new FW_Boolean(booleanT6()));
+//        testManager(new FW_Boolean(booleanT7()));
+//        testManager(new FW_Boolean(booleanT8()));
+
+        FW_Boolean fw_boolean = new FW_Boolean(booleanT9());
+        System.out.print("1 ,2 ,3, 4, 5, 6, 7");
+        fw_boolean.printMatrix();
+        fw_boolean.ReArrangeMat();
+        System.out.print("1 ,2 ,3, 4, 5, 6, 7");
+        fw_boolean.printMatrix();
         System.out.println("Is path: " + fw_boolean.checkPath(6,4));
 
     }

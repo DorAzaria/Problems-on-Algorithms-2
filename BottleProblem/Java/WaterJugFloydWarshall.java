@@ -4,83 +4,100 @@ package BottleProblem.Java;
 import java.util.Arrays;
 
 public class WaterJugFloydWarshall {
-    private int b1, b2,size;
-    private int[][] h;
-    private String[][] paths;
-    final static int INF = 9999999;
-
-    public WaterJugFloydWarshall(int n, int m) {
-        this.b1 = n;
-        this.b2 = m;
-        size = (n+1)*(m+1);
-        h = new int[size][size];
-        paths = new String[size][size];
-        for (int i = 0; i < h.length; i++) {
-            Arrays.fill(h[i],INF);
-            Arrays.fill(paths[i],"");
-        }
-        generate();
-        FW_Bottle();
+    static int infinity = Integer.MAX_VALUE;
+    //the index calculation
+    private static int index(int i, int j, int n){
+        return (n+1)*i + j;
     }
-
-    private void generate() {
-        for (int i = 0; i < b1 +1; i++) {
-            for (int j = 0; j < b2 +1; j++) {
-                int index = index(i,j);
-                h[index][index(i,0)] = 1;
-                h[index][index(0,j)] = 1;
-                h[index][index(b1,j)] = 1;
-                h[index][index(i, b2)] = 1;
-                h[index][index(Math.max(0,i+j- b2),Math.min(b2,i+j))] = 1;
-                h[index][index(Math.min(i+j, b1),Math.max(0,i+j- b1))] = 1;
-
-                generatePath(i,j,i,0);
-                generatePath(i,j,0,j);
-                generatePath(i,j,b1,j);
-                generatePath(i,j,i,b2);
-                generatePath(i,j,Math.max(0,i+j- b2), Math.min(b2,i+j));
-                generatePath(i,j,Math.min(i+j, b1), Math.max(0,i+j- b1));
+    // with weights
+    // the matrix initialization
+    private static int[][] initMatrBottleWeight(int m, int n){
+        int dim = (m+1)*(n+1); // matrix dimension
+        int [][]mat = new int[dim][dim];
+        for (int i=0; i<dim; i++){
+            for (int j=0; j<dim; j++){
+                mat[i][j]= infinity;
             }
         }
+        for (int i=0; i<=m; i++){
+            for (int j=0; j<=n; j++){
+                int ind = index(i,j,n);
+                mat[ind][index(0,j,n)]=1;
+                mat[ind][index(i,0,n)]=1;
+                mat[ind][index(i,n,n)]=1;
+                mat[ind][index(m,j,n)]=1;
+                int i1=index(Math.max(0,i+j-n),Math.min(n,i+j) ,n);
+                mat[ind][i1]=1;
+                i1 = index(Math.min(m,i+j),Math.max(0,j+i-m) ,n);
+                mat[ind][i1]=1;
+            }
+        }
+        for (int i = 0; i < mat.length; i++) {
+            mat[i][i] = infinity;
+        }
+        return mat;
     }
-
-    public void generatePath(int i1, int j1, int i2, int j2) {
-        paths[index(i1,j1)][index(i2,j2)] = "("+i1+","+j1+")->("+i2+","+j2+")";
-    }
-
-    private void FW_Bottle() {
-        for (int k = 0; k < size; k++) {
-            for (int i = 0; i < size; i++) {
-                for (int j = 0; j < size; j++) {
-                    if(h[i][j] > h[i][k] + h[k][j]){
-                        paths[i][j] = paths[i][k] + "->" + paths[k][j];
+    public static String[][] FWWeightForBottle(int [][] mat, int n){
+        int len = mat.length;
+        // path matrix initialization
+        String [][]pathMat = new String[len][len];
+        for (int i=0;i<len;i++){
+            int ai = i/(n+1),  bi = i%(n+1);
+            for (int j=0;j<len;j++){
+                int aj = j/(n+1),  bj = j%(n+1);
+                if (mat[i][j] != infinity) pathMat[i][j] = "" + ai + bi + "->" + aj + bj + " ";
+                else  pathMat[i][j] = "";
+            }
+        }
+        // matrix building
+        for (int k = 0; k<len; k++){
+            for (int i = 0; i<len; i++){
+                for (int j = 0; j<len; j++){
+                    if (mat[i][k]!=infinity && mat[k][j]!=infinity){
+                        if (mat[i][j] > mat[i][k]+mat[k][j]){
+                            mat[i][j] = mat[i][k]+mat[k][j];
+                            pathMat[i][j] = pathMat[i][k]+pathMat[k][j];
+                        }
                     }
-                    h[i][j] = Math.min(h[i][j], h[i][k] + h[k][j]);
                 }
             }
         }
+        return pathMat;
     }
-
-    private int index(int i, int j) {
-        return (b2 +1)*i+j;
+    public static void printMatrix(int [][] mat){
+        for(int i=0; i<mat.length; i++){
+            for(int j=0; j<mat[0].length; j++){
+                if (mat[i][j] < infinity)
+                    System.out.print(mat[i][j]+", ");
+                else System.out.print("*  ");
+            }
+            System.out.println();
+        }
     }
-
-    public String getPath(int i,int j) {
-        return paths[0][index(i,j)];
-    }
-
-    public void printMatrix() {
-        for (int i = 0; i < h.length; i++) {
-            for (int j = 0; j < h.length; j++) {
-                System.out.print((h[i][j] == INF ? "∞" : (int)h[i][j]) + " ");
+    public static void printIntPath(String [][]pathMat, int[][] mat){
+        System.out.println();
+        for(int i=0; i<pathMat.length; i++){
+            for(int j=0; j<pathMat[0].length; j++){
+                if (mat[i][j] < infinity)  System.out.print("["+pathMat[i][j]+"];\t");
             }
             System.out.println();
         }
     }
 
+    public static void checkBottleWeight(int m, int n){
+        System.out.println("-----------------------------");
+        int mat[][] = initMatrBottleWeight(m,n);
+        printMatrix(mat);
+        System.out.println();
+        String[][] paths = FWWeightForBottle(mat, n);
+        printMatrix(mat);
+        System.out.println();
+        printIntPath(paths, mat);
+    }
     public static void main(String[] args) {
-        WaterJugFloydWarshall warshall = new WaterJugFloydWarshall(2, 2);
-        warshall.printMatrix();
-        System.out.println(warshall.getPath(2,2));
+        int m=1, n=1;//m-the first bottle, n-the second bottle
+        System.out.println("m = "+ m + ",  n = "+n+"\n");
+        checkBottleWeight(m, n);
+
     }
 }
