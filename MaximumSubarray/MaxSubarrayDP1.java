@@ -2,7 +2,7 @@ package MaximumSubarray;
 
 import java.util.Arrays;
 
-public class MaxSubarray {
+public class MaxSubarrayDP1 {
 
     public static int maxSub(int[] arr) {
         int[][] mat = new int[arr.length][arr.length];
