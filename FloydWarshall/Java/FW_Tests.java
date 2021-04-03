@@ -1,7 +1,7 @@
 package FloydWarshall.Java;
 
 import java.util.HashMap;
-import java.util.Vector;
+
 
 public class FW_Tests {
     static int testcounter = 1;
@@ -16,19 +16,9 @@ public class FW_Tests {
         System.out.println("O(N) Is the graph connected?: " + fw_boolean.checkConnectivityOpt());
         System.out.println("O(N^2) Number of components: "+ fw_boolean.getNumberOfComponents());
         System.out.println("O(N^2) Show all components: ");
-        HashMap<Integer, Vector<Integer>> components = fw_boolean.getComponents();
+        HashMap<Integer, Integer> components = fw_boolean.generateComponents();
         long end = System.currentTimeMillis();
         long time = end - start;
-        int componentCounter = 1;
-        for(Vector<Integer> vector : components.values()) {
-            System.out.println("\tComponent #"+componentCounter);
-            System.out.print("\t\t");
-            for(Integer num : vector) {
-                System.out.print("V"+num + " ");
-            }
-            System.out.println();
-            componentCounter++;
-        }
 
         System.out.println("## TOTAL TIME: "+time+"ms.");
     }
@@ -130,16 +120,17 @@ public class FW_Tests {
     }
 
     public static void main(String[] args) {
-//        testManager(new FW_Boolean(booleanT1()));
-//        testManager(new FW_Boolean(booleanT2()));
-//        testManager(new FW_Boolean(booleanT3()));
-//        testManager(new FW_Boolean(booleanT4()));
-//        testManager(new FW_Boolean(booleanT5()));
-//        testManager(new FW_Boolean(booleanT6()));
-//        testManager(new FW_Boolean(booleanT7()));
-//        testManager(new FW_Boolean(booleanT8()));
+        testManager(new FW_Boolean(booleanT1()));
+        testManager(new FW_Boolean(booleanT2()));
+        testManager(new FW_Boolean(booleanT3()));
+        testManager(new FW_Boolean(booleanT4()));
+        testManager(new FW_Boolean(booleanT5()));
+        testManager(new FW_Boolean(booleanT6()));
+        testManager(new FW_Boolean(booleanT7()));
+        testManager(new FW_Boolean(booleanT8()));
 
         FW_Boolean fw_boolean = new FW_Boolean(booleanT9());
+        System.out.println(fw_boolean.checkPath(0,5));
         System.out.print("1 ,2 ,3, 4, 5, 6, 7");
         fw_boolean.printMatrix();
         fw_boolean.ReArrangeMat();

@@ -1,8 +1,5 @@
 package BottleProblem.Java;
 
-
-import java.util.Arrays;
-
 public class WaterJugFloydWarshall {
     static int infinity = Integer.MAX_VALUE;
     //the index calculation
@@ -37,6 +34,7 @@ public class WaterJugFloydWarshall {
         }
         return mat;
     }
+
     public static String[][] FWWeightForBottle(int [][] mat, int n){
         int len = mat.length;
         // path matrix initialization
@@ -45,10 +43,13 @@ public class WaterJugFloydWarshall {
             int ai = i/(n+1),  bi = i%(n+1);
             for (int j=0;j<len;j++){
                 int aj = j/(n+1),  bj = j%(n+1);
-                if (mat[i][j] != infinity) pathMat[i][j] = "" + ai + bi + "->" + aj + bj + " ";
-                else  pathMat[i][j] = "";
+                if (mat[i][j] != infinity)
+                    pathMat[i][j] = "" + ai + bi + "->" + aj + bj + " ";
+                else
+                    pathMat[i][j] = "";
             }
         }
+
         // matrix building
         for (int k = 0; k<len; k++){
             for (int i = 0; i<len; i++){

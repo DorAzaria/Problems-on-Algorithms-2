@@ -1,7 +1,5 @@
 package FloydWarshall.Java;
-
 import java.util.HashMap;
-import java.util.Vector;
 
 /**
  * Floyd-Warshall Algorithm for unweighted undirected graphs
@@ -60,24 +58,23 @@ public class FW_Boolean {
 /*********************************** 3. COMPONENTS *************************************/
     /**
      * Time Complexity - O(V^2)
-     * @return an array that represent the components
+     * @return HashMap<NodeID, ComponentID>
      */
-    private int[] generateComponents() {
+    public HashMap<Integer, Integer> generateComponents() {
         int counter = 0;
-        int[] check = new int[matrix.length];
+        HashMap<Integer, Integer> nodes = new HashMap<>();
 
         for(int i = 0; i < matrix.length; i++) {
-            if(check[i] == 0) {
-                counter++;
-                check[i] = counter;
+            if(!nodes.containsKey(i)) {
+                nodes.put(i,++counter);
             }
             for(int j = i+1; j < matrix.length; j++) {
-                if(matrix[i][j] && check[j] == 0) {
-                    check[j] = counter;
+                if(matrix[i][j] && !nodes.containsKey(j)) {
+                    nodes.put(j,counter);
                 }
             }
         }
-        return check;
+        return nodes;
     }
 
     /**
@@ -85,50 +82,22 @@ public class FW_Boolean {
      * @return the number of components
      */
     public int getNumberOfComponents(){
-    int[] check = generateComponents();
+    HashMap<Integer, Integer> nodes = generateComponents();
     int max = 0;
-    for(int i = 0; i < check.length; i++) {
-        if(check[i] > max) {
-            max = check[i];
+    for(Integer number : nodes.values()) {
+        if(number > max) {
+            max = number;
         }
     }
     return max;
 }
-    /**
-     * Time Complexity - O(V^2)
-     * @return an HashMap that contains the components in Vectors.
-     */
-    public HashMap<Integer,Vector<Integer>> getComponents() {
-    HashMap<Integer,Vector<Integer>> components = new HashMap<>();
-    int[] check = generateComponents();
-    for(int i = 0; i < check.length; i++) {
-        if(!components.containsKey(check[i])) {
-            components.put(check[i], new Vector<>());
-        }
-        components.get(check[i]).add(i);
-    }
-    return components;
-}
-/*********************************** 4. Path between V1 to V2 *************************************/
-public boolean checkPath(int v1, int v2) {
-    HashMap<Integer,Vector<Integer>> map = getComponents();
-    int check = 0;
 
-    for(Vector<Integer> vec : map.values()) {
-        for(Integer num : vec) {
-            if(v1 == num) {
-                check++;
-            }
-            if(v2 == num) {
-                check++;
-            }
-        }
-        if(check == 2) {
-            return true;
-        }
-        check = 0;
-    }
-    return false;
+/*********************************** 4. Path between V1 to V2 *************************************/
+// Checks if the two nodes in the same component.
+public boolean checkPath(int v1, int v2) {
+    HashMap<Integer, Integer> nodes = generateComponents();
+    return nodes.containsKey(v1) && nodes.containsKey(v2)
+            && nodes.get(v1).equals(nodes.get(v2));
 }
 
 /*********************************** 5. ARRANGE MATRIX *************************************/
