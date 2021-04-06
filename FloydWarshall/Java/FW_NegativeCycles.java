@@ -61,6 +61,14 @@ public class FW_NegativeCycles {
                 {-10,INF  ,INF}
         };
 
+        // DIRECTED
+        int[][] graph4 = {
+                {0  ,1  ,INF,INF},
+                {INF,0  ,-5 ,INF},
+                {2  ,INF,0  ,1  },
+                {1  ,INF,1  ,0  }
+        };
+
         System.out.println("UNDIRECTED");
         FW_NegativeCycles fw = new FW_NegativeCycles(graph1);
         System.out.println("Check for a negative cycle: "+fw.checkNegativeCycle());
@@ -68,7 +76,7 @@ public class FW_NegativeCycles {
         fw = new FW_NegativeCycles(graph2);
         System.out.println("Check for a negative cycle: "+fw.checkNegativeCycle());
         System.out.println("\nDIRECTED");
-        fw = new FW_NegativeCycles(graph3);
+        fw = new FW_NegativeCycles(graph4);
         System.out.println("Check for a negative cycle: "+fw.checkNegativeCycle());
     }
 }

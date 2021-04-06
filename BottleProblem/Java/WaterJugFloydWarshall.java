@@ -96,7 +96,7 @@ public class WaterJugFloydWarshall {
         printIntPath(paths, mat);
     }
     public static void main(String[] args) {
-        int m=1, n=1;//m-the first bottle, n-the second bottle
+        int m=1, n=2;//m-the first bottle, n-the second bottle
         System.out.println("m = "+ m + ",  n = "+n+"\n");
         checkBottleWeight(m, n);
 
