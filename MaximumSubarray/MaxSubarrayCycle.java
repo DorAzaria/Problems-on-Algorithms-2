@@ -17,7 +17,7 @@ public class MaxSubarrayCycle {
         int[] negative = bestLinear(NegArr);
         int cycleMax = arrSum - (-negative[0]);
 
-        if(regular[0] > cycleMax) {
+        if(regular[0] >= cycleMax) {
             return regular;
         }
         return new int[] {cycleMax, (negative[2] + 1)%arr.length, negative[1] - 1};
@@ -51,6 +51,12 @@ public class MaxSubarrayCycle {
 
     public static void main(String[] args) {
         int[] sol = best(new int[] {6,74,-1,3});
+        System.out.println("Max = "+sol[0] +", Start = " + sol[1] + ", End = "+sol[2]);
+
+        sol = best(new int[] {2,-2,1,-4});
+        System.out.println("Max = "+sol[0] +", Start = " + sol[1] + ", End = "+sol[2]);
+
+        sol = best(new int[] {-2,74});
         System.out.println("Max = "+sol[0] +", Start = " + sol[1] + ", End = "+sol[2]);
     }
 }

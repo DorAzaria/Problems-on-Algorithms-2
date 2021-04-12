@@ -30,5 +30,7 @@ public class MaxSubarrayLinearTime {
     public static void main(String[] args) {
         int[] sol = bestLinear(new int[] {7,-9,2,1});
         System.out.println("Max = "+sol[0] +", Start = " + sol[1] + ", End = "+sol[2]);
+        sol = bestLinear(new int[] {2,-2,1,-4});
+        System.out.println("Max = "+sol[0] +", Start = " + sol[1] + ", End = "+sol[2]);
     }
 }

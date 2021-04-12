@@ -34,7 +34,7 @@ public class GasStationAlgorithm {
         int[] negative = bestLinear(NegArr);
         int cycleMax = arrSum - (-negative[0]);
 
-        if(regular[0] > cycleMax) {
+        if(regular[0] >= cycleMax) {
             return regular;
         }
         return new int[] {cycleMax, (negative[2] + 1)%arr.length, negative[1] - 1};
