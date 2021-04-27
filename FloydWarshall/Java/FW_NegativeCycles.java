@@ -8,7 +8,6 @@ public class FW_NegativeCycles {
 
     public FW_NegativeCycles(int[][] mGraph) {
         this.graph = mGraph;
-        FloydWarshall();
     }
 
     public void FloydWarshall() {
@@ -24,7 +23,7 @@ public class FW_NegativeCycles {
         printMatrix();
     }
 
-    public boolean checkNegativeCycle() {
+    public boolean checkNegativeCycle() { // O(N)
         for(int i = 0 ; i < graph.length; i++) {
             if(graph[i][i] < 0)
                 return true;
@@ -36,6 +35,15 @@ public class FW_NegativeCycles {
         System.out.println(Arrays.deepToString(graph)
                 .replace("],","\n").replace(",","\t| ")
                 .replaceAll("[\\[\\]]", " "));
+    }
+
+    public boolean checkUndirectedNegativeCycle() { // O(N^2)
+        for(int i = 0; i < graph.length; i++) {
+            for(int j = 0; j < graph.length; j++) {
+                if(graph[i][j] < 0) return true;
+            }
+        }
+        return false;
     }
 
     public static void main(String[] args) {
@@ -71,12 +79,15 @@ public class FW_NegativeCycles {
 
         System.out.println("UNDIRECTED");
         FW_NegativeCycles fw = new FW_NegativeCycles(graph1);
-        System.out.println("Check for a negative cycle: "+fw.checkNegativeCycle());
+        fw.FloydWarshall();
+        System.out.println("Check for a negative cycle: "+fw.checkUndirectedNegativeCycle());
         System.out.println("\nDIRECTED");
         fw = new FW_NegativeCycles(graph2);
+        fw.FloydWarshall();
         System.out.println("Check for a negative cycle: "+fw.checkNegativeCycle());
         System.out.println("\nDIRECTED");
         fw = new FW_NegativeCycles(graph4);
+        fw.FloydWarshall();
         System.out.println("Check for a negative cycle: "+fw.checkNegativeCycle());
     }
 }

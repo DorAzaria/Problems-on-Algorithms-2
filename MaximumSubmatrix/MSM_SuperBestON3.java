@@ -15,12 +15,14 @@ public class MSM_SuperBestON3 {
                 preSum[i][j+1] = preSum[i][j] + mat[i][j];
             }
         }
+        printmat(preSum);
 
         for(int i = 0; i < m; i++) { // O(N*M^2)
             for(int j = i; j < m; j++) {
                 int[] arr = new int[n];
                 for (int k = 0; k < n; k++) {
                     arr[k] = preSum[k][j+1] - preSum[k][i];
+                    System.out.println("arr["+k+"] = pre["+k+"]["+j+"+1] - pre["+k+"]["+i+"]");
                 }
                 int[] best = bestLinear(arr);
                 if(best[0] > maxSum) {
@@ -33,7 +35,18 @@ public class MSM_SuperBestON3 {
             }
         }
 
-        return new int[] {maxSum, ii, jj, kk, ll};    }
+        return new int[] {maxSum, ii, jj, kk, ll};
+    }
+
+    public static void printmat(int[][] mat) {
+        int n = mat.length, m = mat[0].length;
+        for(int i = 0 ; i < n ; i++) { // O(N*M)
+            for(int j = 0 ; j < m; j++) {
+                System.out.print(mat[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
 
 /*
 ###########################################################################

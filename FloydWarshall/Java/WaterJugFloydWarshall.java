@@ -1,4 +1,4 @@
-package BottleProblem.Java;
+package FloydWarshall.Java;
 
 public class WaterJugFloydWarshall {
     static int infinity = Integer.MAX_VALUE;

@@ -15,7 +15,6 @@ public class MSM_DynamicON4 {
         for(int j = 1 ; j < m ; j++)
             sumMat[0][j] = sumMat[0][j-1] + mat[0][j];
 
-
         for(int i = 1 ; i < n ; i++) { // O(N*M)
             for(int j = 1 ; j < m; j++) {
                 sumMat[i][j] = mat[i][j] + sumMat[i][j-1] + sumMat[i-1][j] - sumMat[i-1][j-1];
@@ -50,6 +49,8 @@ public class MSM_DynamicON4 {
 
         return new int[] {maxSum, ii, jj, kk, ll};
     }
+
+
 
 
 }
