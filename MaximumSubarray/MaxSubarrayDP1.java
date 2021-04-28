@@ -32,12 +32,12 @@ public class MaxSubarrayDP1 {
         int max = Integer.MIN_VALUE;
         String subarray = "";
 
-        for(int i = mat.length-1 ; i >= 0 ; i--) {
+        for(int i = mat.length-2 ; i >= 0 ; i--) {
             for(int j = i+1 ; j < mat.length; j++) {
-                mat[i][j] = arr[i] + mat[i+1][j];
-                if(mat[i][j] > max) {
-                    max = mat[i][j];
-                    subarray = "The max subarray is at mat["+i+"]["+j+"] = "+max+".";
+                mat[i][j] = arr[j] + mat[i][j-1];
+
+                if(max < mat[i][j]) {
+                    max = Math.max(Math.max(mat[i][j], arr[i]),arr[j]);
                 }
             }
         }
@@ -54,6 +54,7 @@ public class MaxSubarrayDP1 {
 
     public static void main(String[] args) {
         int[] arr = {-10,2,4,-3};
-        System.out.println(maxSub(arr));
+        int[] arr2= {2,4,-7,100,-90,1};
+        System.out.println(maxSub(arr2));
     }
 }
