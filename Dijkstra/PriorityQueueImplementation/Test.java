@@ -1,4 +1,4 @@
-package Dijkstra;
+package Dijkstra.PriorityQueueImplementation;
 
 public class Test {
 
@@ -16,11 +16,18 @@ public class Test {
         graph.addEdge(2,6,6);
         graph.addEdge(4,6,2);
 
-        int source = 0;
-        int[] dist = graph.Dijkstra(source);
+        graph.Dijkstra(0, 6);
+        
+        System.out.println("==================================");
+        graph = new DijkstraAlgorithm(7);
+        graph.addEdge(0,1,2);
+        graph.addEdge(1,2,2);
+        graph.addEdge(1,3,5);
+        graph.addEdge(3,5,5);
+        graph.addEdge(3,4,7);
+        graph.addEdge(4,6,2);
 
-        System.out.println("The shorted path from node :");
-        for (int i = 0; i < dist.length; i++)
-            System.out.println(source + " to " + i + " is " + dist[i]);
+        graph.Dijkstra(0, 6);
+
     }
 }
