@@ -10,5 +10,9 @@ From the course of Algorithms 2 - Computer Science - Ariel University.<br>
 [Row And Column Major Order Comparison Test in Java](https://github.com/DorAzaria/Problems-on-Algorithms-2/blob/main/RowColMajorOrder/RowNColComparison.java)<br>
 [Gas Station Problem](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/GasStationProblem)<br>
 [Maximum Sum Submatrix (Rectangle)](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/MaximumSubmatrix)<br>
+[Dijkstra](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/Dijkstra)<br>
+[Bidirectional Dijkstra](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/Dijkstra/BidirectionalDijkstra)<br>
+[BFS](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/BFS)<br>
+
 
 
