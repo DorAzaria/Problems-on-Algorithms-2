@@ -8,9 +8,11 @@ public class BFSComponents {
 
     final static int WHITE = -1, GRAY = 0, BLACK = 1;
     final static int inf = 100000;
-    private ArrayList<ArrayList<Integer>> graph, components;
+    private ArrayList<ArrayList<Integer>> graph;
+    private ArrayList<ArrayList<Integer>> components;
     private int number_of_components, number_of_nodes;
     private int[] color, parent, distances;
+    private int[] component_id;
 
     public BFSComponents(ArrayList<ArrayList<Integer>> graph) {
         this.graph = graph;
@@ -19,9 +21,9 @@ public class BFSComponents {
         this.color = new int[number_of_nodes];
         this.distances = new int[number_of_nodes];
         this.parent = new int[number_of_nodes];
-        this.components = new ArrayList<>();
-        // about components[]:
-        // each index is a node and the value is the component-id the node belong to.
+        this.component_id = new int[number_of_nodes]; // each index is node-id and its value is the componentID the node belongs to.
+        this.components = new ArrayList<>(); // Each component is represented in a 2D ArrayList that contains <ComponentID, Nodes list>
+
         componentManager();
     }
 
@@ -46,6 +48,7 @@ public class BFSComponents {
     }
 
     /**
+     * Time Complexity - O(N)
      * get the next unvisited component
      * @return the node-id that have found in an unvisited component
      */
@@ -81,11 +84,13 @@ public class BFSComponents {
             }
             color[current] = BLACK;
             components.get(number_of_components).add(current);
+            component_id[current] = number_of_components;
         }
         this.number_of_components++;
     }
 
     /**
+     * Time Complexity - O(1)
      * if there is only one component - return true
      * else, there is more than one component so the graph isn't connected.
      */
@@ -95,6 +100,7 @@ public class BFSComponents {
 
 
     /**
+     * Time Complexity - O(1)
      * @return the number of components in the graph
      */
     public int getNumberOfComponents() {
@@ -102,22 +108,19 @@ public class BFSComponents {
     }
 
     /**
+     * Time Complexity - O(1)
      * @param node_id a node
      * @return every node which is in the same component that node_id is in.
      */
     public ArrayList<Integer> getComponentByNode(int node_id) {
-        for(int i = 0 ; i < number_of_components; i++) {
-            if(components.get(i).contains(node_id)) {
-                return components.get(i);
-            }
-        }
-        return null;
+        return this.components.get(this.component_id[node_id]);
     }
 
     /**
+     * Time Complexity - O(1)
      * @return a 2D ArrayList which represent the componentID and its nodes inside it.
      */
-    public ArrayList<ArrayList<Integer>> getAllComponents() { // O(N)
+    public ArrayList<ArrayList<Integer>> getAllComponents() {
         return this.components;
     }
 
