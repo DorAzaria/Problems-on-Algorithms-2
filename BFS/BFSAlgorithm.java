@@ -49,4 +49,10 @@ public class BFSAlgorithm {
         System.out.println(path + "\n");
     }
 
+    public boolean checkConnectivity(int[] color) {
+        for(int i : color)
+            if(i != BLACK) return false;
+        return true;
+    }
+
 }
