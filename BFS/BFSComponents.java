@@ -22,30 +22,28 @@ public class BFSComponents {
         this.distances = new int[number_of_nodes];
         this.parent = new int[number_of_nodes];
         this.component_id = new int[number_of_nodes]; // each index is node-id and its value is the componentID the node belongs to.
-        this.components = new ArrayList<>(); // Each component is represented in a 2D ArrayList that contains <ComponentID, Nodes list>
+        this.components = new ArrayList<ArrayList<Integer>>(); // Each component is represented in a 2D ArrayList that contains <ComponentID, Nodes list>
 
-        componentManager();
-    }
-
-    /**
-     * Init the structures.
-     * Use BFS for every unvisited component
-     * Each component is represented in a 2D ArrayList that contains <ComponentID, Nodes list>
-     */
-    public void componentManager() {
         for(int i = 0 ; i < number_of_nodes; i++) { // init the structures
             color[i] = WHITE;
             distances[i] = inf;
             parent[i] = -1;
         }
 
+        componentManager();
+    }
+
+    /**
+     * Use BFS for every unvisited component
+     * Each component is represented in a 2D ArrayList that contains <ComponentID, Nodes list>
+     */
+    public void componentManager() {
         int nextComponent = getNextComponent(); // get the first component
         while(nextComponent != -1) { // while there is still more components to visit
             components.add(new ArrayList<>()); // make a new ArrayList for the next unvisited component
             BFS(nextComponent); // use BFS with the given node-id which is inside the unvisited component
             nextComponent = getNextComponent(); // get the next unvisited component
         }
-
     }
 
     /**
@@ -59,7 +57,7 @@ public class BFSComponents {
                 return i;
             }
         }
-        return -1;
+        return -1; // if all the components are visited
     }
 
     /**
@@ -88,7 +86,7 @@ public class BFSComponents {
             component_id[current] = number_of_components; // index: node-id ,  value: component-id
             ///
         }
-        this.number_of_components++;
+        number_of_components++;
     }
 
     /**
@@ -97,7 +95,7 @@ public class BFSComponents {
      * else, there is more than one component so the graph isn't connected.
      */
     public boolean checkConnectivity() {
-        return this.number_of_components == 1;
+        return number_of_components == 1;
     }
 
 
@@ -106,7 +104,7 @@ public class BFSComponents {
      * @return the number of components in the graph
      */
     public int getNumberOfComponents() {
-        return this.number_of_components;
+        return number_of_components;
     }
 
     /**
@@ -115,7 +113,7 @@ public class BFSComponents {
      * @return every node which is in the same component that node_id is in.
      */
     public ArrayList<Integer> getComponentByNode(int node_id) {
-        return this.components.get(this.component_id[node_id]);
+        return components.get(component_id[node_id]);
     }
 
     /**
@@ -123,7 +121,7 @@ public class BFSComponents {
      * @return a 2D ArrayList which represent the componentID and its nodes inside it.
      */
     public ArrayList<ArrayList<Integer>> getAllComponents() {
-        return this.components;
+        return components;
     }
 
 }
