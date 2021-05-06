@@ -41,6 +41,7 @@ public class BFSComponents {
 
         int nextComponent = getNextComponent(); // get the first component
         while(nextComponent != -1) { // while there is still more components to visit
+            components.add(new ArrayList<>()); // make a new ArrayList for the next unvisited component
             BFS(nextComponent); // use BFS with the given node-id which is inside the unvisited component
             nextComponent = getNextComponent(); // get the next unvisited component
         }
@@ -65,7 +66,6 @@ public class BFSComponents {
      * Just a simple BFS but with component data structure
      */
     public void BFS(int src) {
-        components.add(new ArrayList<>());
         Queue<Integer> queue = new LinkedList<>();
 
         queue.add(src);
@@ -83,8 +83,10 @@ public class BFSComponents {
                 }
             }
             color[current] = BLACK;
-            components.get(number_of_components).add(current);
-            component_id[current] = number_of_components;
+            ///
+            components.get(number_of_components).add(current); // add the node to the componentID
+            component_id[current] = number_of_components; // index: node-id ,  value: component-id
+            ///
         }
         this.number_of_components++;
     }
