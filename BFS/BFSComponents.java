@@ -52,7 +52,7 @@ public class BFSComponents {
      * get the next unvisited component
      * @return the node-id that have found in an unvisited component
      */
-    private int getNextComponent() { // returns a node-id from another component
+    private int getNextComponent() {
         for(int i = 0 ; i < distances.length; i++) {
             if(distances[i] == inf) {
                 return i;
