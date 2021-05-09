@@ -13,6 +13,7 @@ From the course of Algorithms 2 - Computer Science - Ariel University.<br>
 [Dijkstra](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/Dijkstra)<br>
 [Bidirectional Dijkstra](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/Dijkstra/BidirectionalDijkstra)<br>
 [BFS](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/BFS)<br>
+[Diameter of A Graph](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/DiameterOfAGraph)<br>
 
 
 
