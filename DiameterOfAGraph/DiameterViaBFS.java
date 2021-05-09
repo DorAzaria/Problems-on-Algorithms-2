@@ -1,4 +1,4 @@
-package DiameterOfATree;
+package DiameterOfAGraph;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

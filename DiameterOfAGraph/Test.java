@@ -1,6 +1,4 @@
-package DiameterOfATree;
-
-import BFS.BFSAlgorithm;
+package DiameterOfAGraph;
 
 import java.util.ArrayList;
 
