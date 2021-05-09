@@ -60,9 +60,6 @@ public class Test {
         for(Integer node : getComponent) {
             System.out.print(node + ", ");
         }
-
-
-
     }
 
     public static ArrayList<ArrayList<Integer>> initGraph(int[][] matrix) {
