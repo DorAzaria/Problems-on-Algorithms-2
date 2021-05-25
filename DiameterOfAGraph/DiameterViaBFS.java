@@ -1,17 +1,16 @@
 package DiameterOfAGraph;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class DiameterViaBFS {
 
     final static int WHITE = -1, GRAY = 0, BLACK = 1;
-    final static int inf = 100000;
+    final static int inf = 1000000;
 
-    public int getDiameter(ArrayList<ArrayList<Integer>> graph) {
+    public int getDiameter(int[][] matrix) {
         int src = 0;
-        int[] distances = BFS(graph,src);
+        int[] distances = BFS(matrix,src);
         int maxValue = 0, maxIndex = 0;
 
         for(int i = 0; i < distances.length; i++) {
@@ -21,7 +20,7 @@ public class DiameterViaBFS {
             }
         }
 
-        distances = BFS(graph,maxIndex);
+        distances = BFS(matrix,maxIndex);
 
         int diameter = 0;
         for(int i = 0; i< distances.length; i++) {
@@ -33,8 +32,8 @@ public class DiameterViaBFS {
         return diameter;
     }
 
-    private int[] BFS(ArrayList<ArrayList<Integer>> graph, int src) {
-        int number_of_nodes = graph.size();
+    private int[] BFS(int[][] matrix, int src) {
+        int number_of_nodes = matrix.length;
         int[] color = new int[number_of_nodes];
         int[] distances = new int[number_of_nodes];
         int[] parent = new int[number_of_nodes];
@@ -51,12 +50,12 @@ public class DiameterViaBFS {
 
         while(!queue.isEmpty()) {
             int current = queue.poll();
-            for(Integer neighbour : graph.get(current)) {
-                if(color[neighbour] == WHITE) {
-                    color[neighbour] = GRAY;
-                    distances[neighbour] = distances[current] + 1;
-                    parent[neighbour] = current;
-                    queue.add(neighbour);
+            for(int i = 0; i < number_of_nodes; i++) {
+                if(color[i] == WHITE && matrix[current][i] != inf) {
+                    color[i] = GRAY;
+                    distances[i] = distances[current] + 1;
+                    parent[i] = current;
+                    queue.add(i);
                 }
             }
             color[current] = BLACK;

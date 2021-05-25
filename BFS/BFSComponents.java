@@ -7,16 +7,16 @@ import java.util.Queue;
 public class BFSComponents {
 
     final static int WHITE = -1, GRAY = 0, BLACK = 1;
-    final static int inf = 100000;
-    private ArrayList<ArrayList<Integer>> graph;
+    final static int inf = 1000000;
+    private int[][] matrix;
     private ArrayList<ArrayList<Integer>> components;
     private int number_of_components, number_of_nodes;
     private int[] color, parent, distances;
     private int[] component_id;
 
-    public BFSComponents(ArrayList<ArrayList<Integer>> graph) {
-        this.graph = graph;
-        this.number_of_nodes = graph.size();
+    public BFSComponents(int[][] matrix) {
+        this.matrix = matrix;
+        this.number_of_nodes = matrix.length;
         this.number_of_components = 0; // each component is represent by its ID
         this.color = new int[number_of_nodes];
         this.distances = new int[number_of_nodes];
@@ -72,12 +72,12 @@ public class BFSComponents {
 
         while(!queue.isEmpty()) {
             int current = queue.poll();
-            for(Integer neighbour : graph.get(current)) {
-                if(color[neighbour] == WHITE) {
-                    color[neighbour] = GRAY;
-                    distances[neighbour] = distances[current] + 1;
-                    parent[neighbour] = current;
-                    queue.add(neighbour);
+            for(int i = 0; i < number_of_nodes; i++) {
+                if(color[i] == WHITE && matrix[current][i] != inf) {
+                    color[i] = GRAY;
+                    distances[i] = distances[current] + 1;
+                    parent[i] = current;
+                    queue.add(i);
                 }
             }
             color[current] = BLACK;

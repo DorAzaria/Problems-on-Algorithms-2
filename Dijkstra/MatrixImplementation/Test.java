@@ -1,7 +1,5 @@
 package Dijkstra.MatrixImplementation;
 
-import java.util.ArrayList;
-
 public class Test {
     static int inf = 1000000;
 
@@ -16,7 +14,7 @@ public class Test {
                         {inf ,inf ,3 ,8 ,inf ,0 ,2 ,inf },
                         {inf ,inf ,inf ,inf ,1 ,2 ,0 ,5 },
                         {inf ,inf ,inf ,inf ,4 ,inf ,5 ,0 }};
-        dijkstraMatrix.Dijkstra(initGraph(matrix),0,7,matrix); // 10
+        dijkstraMatrix.Dijkstra(matrix,0,7); // 10
 
         matrix = new int[][] {{0,2,inf,inf,inf,inf,inf},
                            {2, 0, 2, 5, inf,inf,inf},
@@ -26,17 +24,6 @@ public class Test {
                            {inf,inf,inf,5,inf,0,inf},
                            {inf,inf,inf,inf,2,inf,0}
                         };
-        dijkstraMatrix.Dijkstra(initGraph(matrix),0,6,matrix); // 16
-    }
-
-    public static ArrayList<ArrayList<Integer>> initGraph(int[][] matrix) {
-        ArrayList<ArrayList<Integer>> G = new ArrayList<>();
-        for(int i = 0; i < matrix.length; i++) {
-            for(int j = 0; j < matrix.length; j++) {
-                if(j == 0) G.add(new ArrayList<>());
-                if(matrix[i][j] != inf)  G.get(i).add(j);
-            }
-        }
-        return G;
+        dijkstraMatrix.Dijkstra(matrix,0,6); // 16
     }
 }

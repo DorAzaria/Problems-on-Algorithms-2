@@ -7,10 +7,10 @@ import java.util.Queue;
 public class BFSAlgorithm {
 
     final static int WHITE = -1, GRAY = 0, BLACK = 1;
-    final static int inf = 100000;
+    final static int inf = 1000000;
 
-    public void BFS(ArrayList<ArrayList<Integer>> graph, int src, int dest) {
-        int number_of_nodes = graph.size();
+    public void BFS(int[][] matrix, int src, int dest) {
+        int number_of_nodes = matrix.length;
         int[] color = new int[number_of_nodes];
         int[] distances = new int[number_of_nodes];
         int[] parent = new int[number_of_nodes];
@@ -27,12 +27,12 @@ public class BFSAlgorithm {
 
         while(!queue.isEmpty()) {
             int current = queue.poll();
-            for(Integer neighbour : graph.get(current)) {
-                if(color[neighbour] == WHITE) {
-                    color[neighbour] = GRAY;
-                    distances[neighbour] = distances[current] + 1;
-                    parent[neighbour] = current;
-                    queue.add(neighbour);
+            for(int i = 0; i < number_of_nodes; i++) {
+                if(color[i] == WHITE && matrix[current][i] != inf) {
+                    color[i] = GRAY;
+                    distances[i] = distances[current] + 1;
+                    parent[i] = current;
+                    queue.add(i);
                 }
             }
             color[current] = BLACK;
