@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class FireAlgorithm {
 
-    int center1, center2, radius;
+    int center1, center2, radius, diameter;
     ArrayList<ArrayList<Integer>> tree;
 
     public FireAlgorithm(ArrayList<ArrayList<Integer>> t) {
@@ -12,6 +12,7 @@ public class FireAlgorithm {
         this.center1 = -1;
         this.center2 = -1;
         this.radius = 0;
+        this.diameter = 0;
         Fire();
     }
 
@@ -31,10 +32,10 @@ public class FireAlgorithm {
             int number_of_leaves = leaves.size();
 
             for(int i = 0 ; i < number_of_leaves; i++) {
-                int current_leaf = leaves.remove(0); // remove the first (like a queue)
+                int current_leaf = leaves.remove(0); // remove the first
                 degree[current_leaf] = 0;
                 nodes_to_burn--;
-                for(int j = 0; j < tree.get(current_leaf).size(); j++) {
+                for(int j = 0; j < tree.get(current_leaf).size(); j++) { // notify its neighbours
                     int neighbour = tree.get(current_leaf).get(j);
                     degree[neighbour]--;  // decrease degree of neighbours
                     if(degree[neighbour] == 1)
@@ -44,14 +45,18 @@ public class FireAlgorithm {
             radius++;
         }
 
+
         if(leaves.size()>1) {
             center1 = leaves.remove(0);
             center2 = leaves.remove(0);
             radius++;
+            diameter = radius*2 - 1;
         }
         else {
             center1 = leaves.remove(0);
             center2 = center1;
+            diameter = radius*2;
         }
+
     }
 }
