@@ -24,7 +24,7 @@ public class TreeIsomorphism {
         Arrays.fill(traversalCode, "0");
         int[] color = new int[tree.size()];
         getTraversalCode(root,tree,traversalCode,color);
-        return sortCodes(traversalCode);
+        return sortNgetCode(traversalCode);
     }
 
     private void getTraversalCode(int current, ArrayList<ArrayList<Integer>> tree, String[] tc, int[] color) {
@@ -44,7 +44,7 @@ public class TreeIsomorphism {
         }
     }
 
-    private String sortCodes(String[] traversalCode) {
+    private String sortNgetCode(String[] traversalCode) {
         Arrays.sort(traversalCode); // O(NlogN)
         String sortedCode = "";
         int current = 1;
