@@ -24,7 +24,7 @@ public class Test {
         FireAlgorithm fireAlgorithm = new FireAlgorithm(initGraph(matrix));
         System.out.print("Test 1 ----> ");
         System.out.print(" Radius: " + fireAlgorithm.radius);
-        System.out.print(" Diameter: " + fireAlgorithm.diameter);
+        System.out.print(" Diameter: " + fireAlgorithm.diameter); // 4
         System.out.print(" Center1: " + fireAlgorithm.center1);
         System.out.print(" Center2: " + fireAlgorithm.center2);
 
@@ -46,11 +46,10 @@ public class Test {
                 {inf,inf,inf,inf,1,inf,1},
                 {inf,inf,inf,inf,inf,1,inf}
         };
-
         fireAlgorithm = new FireAlgorithm(initGraph(matrix));
         System.out.print("\nTest 2 ----> ");
         System.out.print(" Radius: " + fireAlgorithm.radius);
-        System.out.print(" Diameter: " + fireAlgorithm.diameter);
+        System.out.print(" Diameter: " + fireAlgorithm.diameter); // 5
         System.out.print(" Center1: " + fireAlgorithm.center1);
         System.out.print(" Center2: " + fireAlgorithm.center2);
 
@@ -70,7 +69,7 @@ public class Test {
         fireAlgorithm = new FireAlgorithm(initGraph(matrix));
         System.out.print("\nTest 3 ----> ");
         System.out.print(" Radius: " + fireAlgorithm.radius);
-        System.out.print(" Diameter: " + fireAlgorithm.diameter);
+        System.out.print(" Diameter: " + fireAlgorithm.diameter); // 4
         System.out.print(" Center1: " + fireAlgorithm.center1);
         System.out.print(" Center2: " + fireAlgorithm.center2);
 
@@ -92,7 +91,7 @@ public class Test {
         fireAlgorithm = new FireAlgorithm(initGraph(matrix));
         System.out.print("\nTest 4 ----> ");
         System.out.print(" Radius: " + fireAlgorithm.radius);
-        System.out.print(" Diameter: " + fireAlgorithm.diameter);
+        System.out.print(" Diameter: " + fireAlgorithm.diameter); // 7
         System.out.print(" Center1: " + fireAlgorithm.center1);
         System.out.print(" Center2: " + fireAlgorithm.center2);
 
@@ -117,7 +116,7 @@ public class Test {
         fireAlgorithm = new FireAlgorithm(initGraph(matrix));
         System.out.print("\nTest 5 ----> ");
         System.out.print(" Radius: " + fireAlgorithm.radius);
-        System.out.print(" Diameter: " + fireAlgorithm.diameter);
+        System.out.print(" Diameter: " + fireAlgorithm.diameter); // 5
         System.out.print(" Center1: " + fireAlgorithm.center1);
         System.out.print(" Center2: " + fireAlgorithm.center2);
 
@@ -144,7 +143,7 @@ public class Test {
         fireAlgorithm = new FireAlgorithm(initGraph(matrix));
         System.out.print("\nTest 6 ----> ");
         System.out.print(" Radius: " + fireAlgorithm.radius);
-        System.out.print(" Diameter: " + fireAlgorithm.diameter);
+        System.out.print(" Diameter: " + fireAlgorithm.diameter); // 2
         System.out.print(" Center1: " + fireAlgorithm.center1);
         System.out.print(" Center2: " + fireAlgorithm.center2);
     }
