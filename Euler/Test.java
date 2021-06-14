@@ -20,11 +20,25 @@ public class Test {
         };
 
         ArrayList<ArrayList<Integer>> graph = generateGraph(mat);
-        EulerianCycle eulerianCycle = new EulerianCycle();
-        Stack<Integer> path = eulerianCycle.CycleAlgorithm(graph,8);
+        EulerAlgorithms euler = new EulerAlgorithms();
+        Stack<Integer> cycle = euler.EulerianCycle(graph,8);
 
+        while(!cycle.isEmpty()) {
+            System.out.print(cycle.pop()+ "->");
+        }
+
+        mat = new int[][] {
+                {0,1,0,0,1},
+                {1,0,1,1,0},
+                {0,1,0,1,0},
+                {0,1,1,0,1},
+                {1,0,0,1,0}
+        };
+
+        Stack<Integer> path = euler.EulerianPath(generateGraph(mat));
+        System.out.println();
         while(!path.isEmpty()) {
-            System.out.print((path.pop()+1)+ "->");
+            System.out.print(path.pop()+ "->");
         }
 
     }
