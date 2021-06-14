@@ -7,7 +7,7 @@ public class EulerAlgorithms {
 
 
     public Stack<Integer> EulerianCycle(ArrayList<ArrayList<Integer>> graph, int start_node) {
-        if(hasEulerianCycle(graph)) // there is a cycle
+        if(hasEulerianCycle(graph)) // there is a cycle also need to check connectivity via BFS
             return EulerianAlgorithm(graph,start_node);
         return new Stack<>();
     }
@@ -22,7 +22,7 @@ public class EulerAlgorithms {
     }
 
     public Stack<Integer> EulerianPath(ArrayList<ArrayList<Integer>> graph) {
-        int start_index = hasEulerPath(graph);
+        int start_index = hasEulerPath(graph); // also need to check connectivity via BFS
         return EulerianAlgorithm(graph,start_index);
     }
 
