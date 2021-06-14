@@ -19,3 +19,6 @@ From the course of Algorithms 2 - Computer Science - Ariel University.<br>
 [DFS Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/DFS)<br>
 [Generate Tree By a Given Degree Series](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/BuildTreeFromDegrees)<br>
 [Isomorphic Trees](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/IsomorphicTrees)<br>
+[Huffman Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/HuffmanAlgorithm)<br>
+[Kruskal Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/KruskalAlgorithm)<br>
+[Prim Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/PrimAlgorithm)<br>
