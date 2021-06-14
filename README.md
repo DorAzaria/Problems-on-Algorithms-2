@@ -22,3 +22,5 @@ From the course of Algorithms 2 - Computer Science - Ariel University.<br>
 [Huffman Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/HuffmanAlgorithm)<br>
 [Kruskal Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/KruskalAlgorithm)<br>
 [Prim Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/PrimAlgorithm)<br>
+[Euler Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/Euler)<br>
+
