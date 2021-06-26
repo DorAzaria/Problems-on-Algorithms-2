@@ -23,9 +23,9 @@ Dijkstra(G, src):
       foreach v∈Adj[u] do:
           if not visited[v] then:
               if dist[v] > dist[u] + weight(v,u) then:
-              dist[v] ⇐  dist[u] + weight(v,u)
-              prev[v] ⇐ u
-              Enqueue(Q, v)
+                  dist[v] ⇐  dist[u] + weight(v,u)
+                  prev[v] ⇐ u
+                  Enqueue(Q, v)
               end-if
           end-if
       end-for
