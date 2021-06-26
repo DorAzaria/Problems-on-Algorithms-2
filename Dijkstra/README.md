@@ -9,7 +9,7 @@ Dijkstra(G, src):
   create prev[|V[G]|]
   create visited[|V[G]|]
 
-  foreach v∈V[G] do:
+  for each v∈V[G] do:
       dist[v] ⇐ 
       prev[v] ⇐ NIL
       visited[v] ⇐ false
@@ -20,7 +20,7 @@ Dijkstra(G, src):
 
   while Q is not empty do:
       u ⇐ Dequeue(Q)
-      foreach v∈Adj[u] do:
+      for each v∈Adj[u] do:
           if not visited[v] then:
               if dist[v] > dist[u] + weight(v,u) then:
                   dist[v] ⇐  dist[u] + weight(v,u)
