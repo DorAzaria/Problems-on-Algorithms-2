@@ -10,26 +10,26 @@ Dijkstra(G, src):
   create visited[|V[G]|]
 
   foreach v∈V[G] do:
-    dist[v] ⇐ 
-    prev[v] ⇐ NIL
-    visited[v] ⇐ false
+      dist[v] ⇐ 
+      prev[v] ⇐ NIL
+      visited[v] ⇐ false
   end-for
 
   dist[src] ⇐ 0
   Enqueue(Q, src)
 
   while Q is not empty do:
-    u ⇐ Dequeue(Q)
-    foreach v∈Adj[u] do:
-      if not visited[v] then:
-        if dist[v] > dist[u] + weight(v,u) then:
-        dist[v] ⇐  dist[u] + weight(v,u)
-        prev[v] ⇐ u
-        Enqueue(Q, v)
-        end-if
-      end-if
-    end-for
-    visited[u] ⇐ true
+      u ⇐ Dequeue(Q)
+      foreach v∈Adj[u] do:
+          if not visited[v] then:
+              if dist[v] > dist[u] + weight(v,u) then:
+              dist[v] ⇐  dist[u] + weight(v,u)
+              prev[v] ⇐ u
+              Enqueue(Q, v)
+              end-if
+          end-if
+      end-for
+      visited[u] ⇐ true
   end-while
 end-Dijkstra
 
