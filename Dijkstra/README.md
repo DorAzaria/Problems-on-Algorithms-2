@@ -10,7 +10,7 @@ Dijkstra(G, src):
   create visited[|V[G]|]
 
   for each v∈V[G] do:
-      dist[v] ⇐ 
+      dist[v] ⇐ ∞
       prev[v] ⇐ NIL
       visited[v] ⇐ false
   end-for
