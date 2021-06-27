@@ -3,7 +3,7 @@
 | --- | --- | 
 
 From the course of Algorithms 2 - Computer Science - Ariel University.<br>
-[Bottles / Water Jug Problem](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/BottleProblem)<br>
+[Bottles / Water Jug Problem](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/BottleProblem) - $$O((b_1+1)(b_2+1)$$<br> 
 [Divide Chocolate Problem](https://github.com/DorAzaria/Problems-on-Algorithms-2/blob/main/DivideChocolateProblem/DivideChocolateProblem.java)<br>
 [Floyd Warshall](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/FloydWarshall)<br>
 [Maximum Subarray (BEST)](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/MaximumSubarray)<br>
