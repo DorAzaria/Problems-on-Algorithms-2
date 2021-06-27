@@ -6,7 +6,7 @@ From the course of Algorithms 2 - Computer Science - Ariel University.<br>
 [Bottles / Water Jug Problem](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/BottleProblem)<br>
 [Divide Chocolate Problem](https://github.com/DorAzaria/Problems-on-Algorithms-2/blob/main/DivideChocolateProblem/DivideChocolateProblem.java)<br>
 [Floyd Warshall](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/FloydWarshall)<br>
-[Maximum Subarray](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/MaximumSubarray)<br>
+[Maximum Subarray (BEST)](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/MaximumSubarray)<br>
 [Row And Column Major Order Comparison Test in Java](https://github.com/DorAzaria/Problems-on-Algorithms-2/blob/main/RowColMajorOrder/RowNColComparison.java)<br>
 [Gas Station Problem](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/GasStationProblem)<br>
 [Maximum Sum Submatrix (Rectangle)](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/MaximumSubmatrix)<br>
