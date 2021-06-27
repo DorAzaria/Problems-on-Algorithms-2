@@ -8,7 +8,7 @@ gasStationProblem(nodes[N], edges[N]):
   create combine[N]
 
   for i⇐ 0 to N do:
-    combine[i] ⇐ nodes[i]+edges[i]
+    combine[i] ⇐ nodes[i]-edges[i]
     sum ⇐ sum + combine[i]
   end-for
 
