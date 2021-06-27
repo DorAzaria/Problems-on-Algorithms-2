@@ -56,3 +56,48 @@ sortCodes(tCode[|V(T)|]):
 end-sortCodes
 
 ```
+
+### Algorithm (with no given root) Using Fire Algorithm
+```java
+isIsomorphicWithoutRoot(T1, T2):
+	
+	centerT1 ⇐ Fire(T1)
+	centerT2 ⇐ Fire(T2)
+	
+	return isIsomorphic(T1, centerT1, T2, centerT2) // (from the previous algorithm)
+
+end-isIsomorphicWithoutRoot
+
+
+Fire(T):
+    create Queue Q ⇐ ∅
+    radius ⇐ 0
+
+    for each v∈V[T] do:
+        if deg(v)=1 then:
+            Enqueue(Q,v)
+        end-if
+    end-for
+
+    nodes ⇐ |V[T]|
+    while nodes > 2 do:
+        radius ⇐ radius + 1
+        leaves ⇐ |Q|
+        for i⇐ 0 to leaves do:
+            u ⇐ Dequeue(Q)
+            v ⇐ {v|v∈Adj(u)}
+            Remove(T,u)
+            nodes ⇐ nodes - 1
+            if deg(v)=1 then:
+                Enqueue(Q,v)
+            end-if 
+        end-for
+    end-while 
+
+    center_node ⇐ Dequeue(Q)
+
+    return center_node
+
+end-Fire
+
+```
