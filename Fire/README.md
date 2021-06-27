@@ -30,14 +30,14 @@ Fire(T):
     end-while 
 
     centers ⇐ nodes
-    diameter ⇐ radius * 2
     if nodes = 2 then:
-        radius ⇐ radius + 1
-        diameter ⇐ diameter + 1
+            diameter ⇐ radius * 2 + 1
+            radius ⇐ radius + 1
+    else:
+            diameter ⇐ radius * 2
     end-if 
 
     return diameter,radius,centers
-
 end-Fire
 
 ```
