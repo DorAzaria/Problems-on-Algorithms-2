@@ -25,7 +25,7 @@ Dijkstra(G, src):
               if dist[v] > dist[u] + weight(v,u) then:
                   dist[v] ⇐  dist[u] + weight(v,u)
                   prev[v] ⇐ u
-                  Enqueue(Q, v)
+                  DecreaseKey(Q, v)
               end-if
           end-if
       end-for
