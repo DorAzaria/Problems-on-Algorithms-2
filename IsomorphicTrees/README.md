@@ -1,6 +1,6 @@
 # Isomorphic Trees
 
-This is my implementation, if there are any mistakes here it is your responsibility!
+This is my implementation, if there are any mistakes here it is **your responsibility**!
 
 ### Algorithm
 Works only if we know the root of each tree
