@@ -70,7 +70,7 @@ BidirectionalDijkstra(G,RG,src,dest):
                     if dist[v] > dist[u] + weight(u,v) then:
                           dist[v] ⇐ dist[u] + weight(u,v)
                           prev[v] ⇐ u
-                          Enqueue(Q,v)
+                          DecreaseKey(Q,v)
                     end-if
               end-if
           end-for
@@ -83,7 +83,7 @@ BidirectionalDijkstra(G,RG,src,dest):
                   if rdist[v] > rdist[ru] + weight(ru,v) then:
                     rdist[v] ⇐ rdist[ru] + weight(ru,v)
                     rprev[v] ⇐ ru
-                    Enqueue(RQ,v)
+                    DecreaseKey(RQ,v)
                   end-if
               end-if
           end-for
