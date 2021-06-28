@@ -1,8 +1,8 @@
-# Isomorphic Trees
+# Isomorphic Trees (AHU Algorithm)
 
 This is my implementation, if there are any mistakes here it is **your responsibility**!
 
-### Algorithm
+### Algorithm for rooted Tree
 Works only if we know the root of each tree
 ```java
 isIsomorphic(T1, root1, T2, root2):
@@ -59,48 +59,58 @@ end-sortCodes
 
 ```
 
-### Algorithm (with no given root) Using Fire Algorithm
+### Algorithm for un-rooted Tree Using Fire Algorithm
 ```java
 isIsomorphicWithoutRoot(T1, T2):
-	
-	centerT1 ⇐ Fire(T1)
-	centerT2 ⇐ Fire(T2)
-	
-	return isIsomorphic(T1, centerT1, T2, centerT2) // (from the previous algorithm)
+     create Queue roots1
+     create Queue roots2
+
+     roots1 ⇐ Fire(T1)
+     roots2 ⇐ Fire(T2)
+
+     code1 ⇐ generateCode(T1, root1) // continue like the rooted-tree algorithm
+
+     while roots2 is not empty do:
+          r2 ⇐ Dequeue(roots2)
+          code2 ⇐ generateCode(T2, root2) // continue like the rooted-tree algorithm
+	  if code1 = code2 then:
+	     return true
+	  end-if
+     end-while
+
+     return false
 
 end-isIsomorphicWithoutRoot
 
-
 Fire(T):
-        create Queue Q ⇐ ∅
-        create deg[|V(T)|]
+	create Queue Q ⇐ ∅
+	create deg[|V(T)|]
 
-        for each v∈V(T) do:
-                deg[v] ⇐ |Adj(v)|
-                if deg[v]=1 then:
-                        Enqueue(Q,v)
-                end-if
-        end-for
+	for each v∈V(T) do:
+		deg[v] ⇐ |Adj(v)|
+		if deg[v]=1 then:
+			Enqueue(Q,v)
+		end-if
+	end-for
 
-        nodes ⇐ |V[T]|
-        while nodes > 2 do:
-                leaves ⇐ |Q|
-                for i⇐ 0 to leaves do:
-                        u ⇐ Dequeue(Q)
-                        nodes ⇐ nodes - 1
-                        for each v∈Adj(u) do:
+	nodes ⇐ |V[T]|
+	while nodes > 2 do:
+		leaves ⇐ |Q|
+		for i⇐ 0 to leaves do:
+			u ⇐ Dequeue(Q)
+			nodes ⇐ nodes - 1
+			for each v∈Adj(u) do:
 				deg[v] ⇐ deg[v] - 1
-                                if deg[v]=1 then:
-                                        Enqueue(Q,v)
-                                end-if 
-                        end-for
-                end-for 
-        end-while 
-	
-	centerNode ⇐ Dequeue(Q)
+				if deg[v]=1 then:
+					Enqueue(Q,v)
+				end-if 
+			end-for
+		end-for 
+	end-while 
 
-        return centerNode
+	return Q
 
 end-Fire
+
 
 ```
