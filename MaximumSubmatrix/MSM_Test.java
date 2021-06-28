@@ -18,7 +18,8 @@ public class MSM_Test {
         System.out.println("\tNaive O(N^6):      " + Arrays.toString(MSM_NaiveON6.maxSumMatrix(matrix1)));
         System.out.println("\tBest O(N^4):       " + Arrays.toString(MSM_BestON4.maxSumMatrix(matrix1)));
         System.out.println("\tDynamic O(N^4):    " + Arrays.toString(MSM_DynamicON4.maxSumMatrix(matrix1)));
-        System.out.println("\tSuper Best O(N^3): " + Arrays.toString(MSM_SuperBestON3.maxSumMatrix(matrix1)) + " \n");
+        System.out.println("\tSuper Best O(N^3): " + Arrays.toString(MSM_SuperBestON3.maxSumMatrix(matrix1)));
+        System.out.println("\tSuper Best Pro O(N^3): " + Arrays.toString(MSM_SuperBestProON3.maxSumMatrix(matrix1)) + " \n");
 
         int[][] matrix2 = {
                 {-10,5,-4,3,4},
@@ -31,7 +32,8 @@ public class MSM_Test {
         System.out.println("\tNaive O(N^6):      " + Arrays.toString(MSM_NaiveON6.maxSumMatrix(matrix2)));
         System.out.println("\tBest O(N^4):       " + Arrays.toString(MSM_BestON4.maxSumMatrix(matrix2)));
         System.out.println("\tDynamic O(N^4):    " + Arrays.toString(MSM_DynamicON4.maxSumMatrix(matrix2)));
-        System.out.println("\tSuper Best O(N^3): " + Arrays.toString(MSM_SuperBestON3.maxSumMatrix(matrix2)) + " \n");
+        System.out.println("\tSuper Best O(N^3): " + Arrays.toString(MSM_SuperBestON3.maxSumMatrix(matrix2)));
+        System.out.println("\tSuper Best Pro O(N^3): " + Arrays.toString(MSM_SuperBestProON3.maxSumMatrix(matrix2)) + " \n");
 
         int[][] matrix3 = {
                 {1,2,3},
@@ -43,7 +45,8 @@ public class MSM_Test {
         System.out.println("\tNaive O(N^6):      " + Arrays.toString(MSM_NaiveON6.maxSumMatrix(matrix3)));
         System.out.println("\tBest O(N^4):       " + Arrays.toString(MSM_BestON4.maxSumMatrix(matrix3)));
         System.out.println("\tDynamic O(N^4):    " + Arrays.toString(MSM_DynamicON4.maxSumMatrix(matrix3)));
-        System.out.println("\tSuper Best O(N^3): " + Arrays.toString(MSM_SuperBestON3.maxSumMatrix(matrix3)) + " \n");
+        System.out.println("\tSuper Best O(N^3): " + Arrays.toString(MSM_SuperBestON3.maxSumMatrix(matrix3)));
+        System.out.println("\tSuper Best Pro O(N^3): " + Arrays.toString(MSM_SuperBestProON3.maxSumMatrix(matrix3)) + " \n");
 
         int[][] matrix4 = {
                 {1,2,3},
@@ -55,7 +58,8 @@ public class MSM_Test {
         System.out.println("\tNaive O(N^6):      " + Arrays.toString(MSM_NaiveON6.maxSumMatrix(matrix4)));
         System.out.println("\tBest O(N^4):       " + Arrays.toString(MSM_BestON4.maxSumMatrix(matrix4)));
         System.out.println("\tDynamic O(N^4):    " + Arrays.toString(MSM_DynamicON4.maxSumMatrix(matrix4)));
-        System.out.println("\tSuper Best O(N^3): " + Arrays.toString(MSM_SuperBestON3.maxSumMatrix(matrix4)) + " \n");
+        System.out.println("\tSuper Best O(N^3): " + Arrays.toString(MSM_SuperBestON3.maxSumMatrix(matrix4)) );
+        System.out.println("\tSuper Best Pro O(N^3): " + Arrays.toString(MSM_SuperBestProON3.maxSumMatrix(matrix4)) + " \n");
 
         int[][] matrix5 = {
                 {-2,1},
@@ -66,7 +70,8 @@ public class MSM_Test {
         System.out.println("\tNaive O(N^6):      " + Arrays.toString(MSM_NaiveON6.maxSumMatrix(matrix5)));
         System.out.println("\tBest O(N^4):       " + Arrays.toString(MSM_BestON4.maxSumMatrix(matrix5)));
         System.out.println("\tDynamic O(N^4):    " + Arrays.toString(MSM_DynamicON4.maxSumMatrix(matrix5)));
-        System.out.println("\tSuper Best O(N^3): " + Arrays.toString(MSM_SuperBestON3.maxSumMatrix(matrix5)) + " \n");
+        System.out.println("\tSuper Best O(N^3): " + Arrays.toString(MSM_SuperBestON3.maxSumMatrix(matrix5)));
+        System.out.println("\tSuper Best Pro O(N^3): " + Arrays.toString(MSM_SuperBestProON3.maxSumMatrix(matrix5)) + " \n");
 
         int[][] matrix6 = {
                 {1,2},
@@ -77,7 +82,8 @@ public class MSM_Test {
         System.out.println("\tNaive O(N^6):      " + Arrays.toString(MSM_NaiveON6.maxSumMatrix(matrix6)));
         System.out.println("\tBest O(N^4):       " + Arrays.toString(MSM_BestON4.maxSumMatrix(matrix6)));
         System.out.println("\tDynamic O(N^4):    " + Arrays.toString(MSM_DynamicON4.maxSumMatrix(matrix6)));
-        System.out.println("\tSuper Best O(N^3): " + Arrays.toString(MSM_SuperBestON3.maxSumMatrix(matrix6)) + " \n");
+        System.out.println("\tSuper Best O(N^3): " + Arrays.toString(MSM_SuperBestON3.maxSumMatrix(matrix6)));
+        System.out.println("\tSuper Best Pro O(N^3): " + Arrays.toString(MSM_SuperBestProON3.maxSumMatrix(matrix6)) + " \n");
 
         int[][] matrix7 = {
                 {2,10,8,3},
@@ -91,7 +97,16 @@ public class MSM_Test {
         System.out.println("\tNaive O(N^6):      " + Arrays.toString(MSM_NaiveON6.maxSumMatrix(matrix7)));
         System.out.println("\tBest O(N^4):       " + Arrays.toString(MSM_BestON4.maxSumMatrix(matrix7)));
         System.out.println("\tDynamic O(N^4):    " + Arrays.toString(MSM_DynamicON4.maxSumMatrix(matrix7)));
-        System.out.println("\tSuper Best O(N^3): " + Arrays.toString(MSM_SuperBestON3.maxSumMatrix(matrix7)) + " \n");
+        System.out.println("\tSuper Best O(N^3): " + Arrays.toString(MSM_SuperBestON3.maxSumMatrix(matrix7)) );
+        System.out.println("\tSuper Best Pro O(N^3): " + Arrays.toString(MSM_SuperBestProON3.maxSumMatrix(matrix7)) + " \n");
+
+        int[][] matrix8 = {
+                {2,1,-3,-4,5},
+                {0,6,3,4,1},
+                {2,-2,-1,4,-5},
+                {-3,3,1,0,3}
+        };
+        System.out.println("\tSuper Best O(N^3): " + Arrays.toString(MSM_SuperBestON3.maxSumMatrix(matrix8)) + " \n");
 
     }
 }

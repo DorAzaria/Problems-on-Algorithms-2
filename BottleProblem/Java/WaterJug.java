@@ -81,8 +81,8 @@ public class WaterJug {
     }
 
     public static void main(String[] args) {
-        int bottle1 = 2;
-        int bottle2 = 1;
+        int bottle1 = 6;
+        int bottle2 = 2;
 
         WaterJug waterJug = new WaterJug(bottle1,bottle2);
         waterJug.printMatrix();

@@ -29,5 +29,15 @@ public class Test {
 
         graph.Dijkstra(0, 6);
 
+        Directed dgraph = new Directed(6);
+        dgraph.addEdge(0,2,3);
+        dgraph.addEdge(1,0,1);
+        dgraph.addEdge(1,2,2);
+        dgraph.addEdge(1,3,4);
+        dgraph.addEdge(2,4,2);
+        dgraph.addEdge(2,3,5);
+        dgraph.addEdge(3,5,4);
+        dgraph.addEdge(4,5,4);
+        dgraph.Dijkstra(0);
     }
 }

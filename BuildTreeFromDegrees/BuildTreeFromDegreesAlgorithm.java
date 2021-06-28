@@ -10,7 +10,7 @@ public class BuildTreeFromDegreesAlgorithm {
             sum += degree;
         }
 
-        if((sum / 2) + 1 != degrees.length) {
+        if(sum != 2*(degrees.length-1)) {
             System.out.println("This degree array can't generate a tree due to definition");
             return new int[] {};
         }

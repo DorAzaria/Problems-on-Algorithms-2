@@ -1,6 +1,8 @@
 package Fire;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class FireAlgorithm {
 
@@ -18,7 +20,7 @@ public class FireAlgorithm {
 
     public void Fire() {
         int number_of_nodes = tree.size();
-        ArrayList<Integer> leaves = new ArrayList<>();
+        Queue<Integer> leaves = new LinkedList<>();
         int[] degree = new int[number_of_nodes];
 
         for(int i = 0; i < number_of_nodes; i++) { // O(|V|)
@@ -32,13 +34,13 @@ public class FireAlgorithm {
             int number_of_leaves = leaves.size();
 
             for(int i = 0 ; i < number_of_leaves; i++) {
-                int current_leaf = leaves.remove(0); // remove the first
+                int current_leaf = leaves.remove(); // remove the first
                 degree[current_leaf] = 0;
                 nodes_to_burn--;
                 for(int j = 0; j < tree.get(current_leaf).size(); j++) { // notify its neighbours
                     int neighbour = tree.get(current_leaf).get(j);
                     degree[neighbour]--;  // decrease degree of neighbours
-                    if(degree[neighbour] == 1)
+                    if (degree[neighbour] == 1)
                         leaves.add(neighbour);
                 }
             }
@@ -47,13 +49,13 @@ public class FireAlgorithm {
 
 
         if(leaves.size()>1) {
-            center1 = leaves.remove(0);
-            center2 = leaves.remove(0);
+            center1 = leaves.remove();
+            center2 = leaves.remove();
+            diameter = radius*2 + 1;
             radius++;
-            diameter = radius*2 - 1;
         }
         else {
-            center1 = leaves.remove(0);
+            center1 = leaves.remove();
             center2 = center1;
             diameter = radius*2;
         }

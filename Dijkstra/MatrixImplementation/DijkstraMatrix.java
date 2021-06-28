@@ -15,7 +15,8 @@ public class DijkstraMatrix {
 
         // init the data structures.
         for(int i = 0; i < number_of_nodes; i++) {
-            distances[i] = inf; previous[i] = -1;
+            distances[i] = inf;
+            previous[i] = -1;
         }
 
         distances[src] = 0;

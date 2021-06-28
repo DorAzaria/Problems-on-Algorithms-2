@@ -24,7 +24,7 @@ public class Test {
         actualNoRoot = treeIsomorphism.isIsomorphicWithoutRoot(tree2,tree3);
         System.out.println("Test 2 ---> Are the trees isomorphic?");
         System.out.println("\t\t\tWith given root --> {actual="+actualRoot+"}  --> {expected=false}");
-        System.out.println("\t\t\tWith no given root --> {actual="+actualNoRoot+"}  --> {expected=true???}");
+        System.out.println("\t\t\tWith no given root --> {actual="+actualNoRoot+"}  --> {expected=true}");
 
         //********************* TEST 3 **********************///
         actualRoot = treeIsomorphism.isIsomorphic(tree3,0,tree4,0);

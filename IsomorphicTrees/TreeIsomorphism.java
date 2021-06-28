@@ -14,9 +14,18 @@ public class TreeIsomorphism {
     }
 
     public boolean isIsomorphicWithoutRoot(ArrayList<ArrayList<Integer>> tree1, ArrayList<ArrayList<Integer>> tree2) {
-        int center_tree_1 = findCenterFire(tree1);
-        int center_tree_2 = findCenterFire(tree2);
-        return isIsomorphic(tree1,center_tree_1,tree2,center_tree_2);
+        ArrayList<Integer> center_tree_1 = findCenterFire(tree1);
+        ArrayList<Integer> center_tree_2 = findCenterFire(tree2);
+
+        String code1 = generateCode(tree1, center_tree_1.get(0));
+
+        for(Integer root2 : center_tree_2) {
+            String code2 = generateCode(tree2, root2);
+            if (code1.equals(code2)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private String generateCode(ArrayList<ArrayList<Integer>> tree, int root) {
@@ -28,14 +37,12 @@ public class TreeIsomorphism {
     }
 
     private void getTraversalCode(int current, ArrayList<ArrayList<Integer>> tree, String[] tc, int[] color) {
+        color[current] = BLACK;
         if (tree.get(current).size() == 1) { // if its a leaf
-            color[current] = BLACK;
             tc[current] = "01";
         } else {
-            color[current] = BLACK;
             for(Integer neighbour : tree.get(current)) {
                 if(color[neighbour] == WHITE) {
-                    color[current] = GRAY;
                     getTraversalCode(neighbour, tree, tc, color);
                     tc[current] += tc[neighbour];
                 }
@@ -55,7 +62,7 @@ public class TreeIsomorphism {
         return sortedCode;
     }
 
-    private int findCenterFire(ArrayList<ArrayList<Integer>> tree) {
+    private ArrayList<Integer> findCenterFire(ArrayList<ArrayList<Integer>> tree) {
         int number_of_nodes = tree.size();
         ArrayList<Integer> leaves = new ArrayList<>();
         int[] degree = new int[number_of_nodes];
@@ -84,15 +91,7 @@ public class TreeIsomorphism {
                 }
             }
         }
-        int center1 = -1, center2 = -1;
-        if(leaves.size()>1) {
-            center1 = leaves.remove(0);
-            center2 = leaves.remove(0);
-        }
-        else {
-            center1 = leaves.remove(0);
-        }
-        return center1;
+        return leaves;
     }
 
     private void printCodes(String[] traversalCode) {

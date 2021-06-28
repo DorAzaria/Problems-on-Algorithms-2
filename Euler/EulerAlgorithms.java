@@ -68,6 +68,4 @@ public class EulerAlgorithms {
         return path;
     }
 
-
-
 }

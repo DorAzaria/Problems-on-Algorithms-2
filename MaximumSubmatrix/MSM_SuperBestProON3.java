@@ -1,6 +1,6 @@
 package MaximumSubmatrix;
 
-public class MSM_SuperBestON3 {
+public class MSM_SuperBestProON3 {
 
     public static int[] maxSumMatrix(int[][] mat) {
 
@@ -8,19 +8,12 @@ public class MSM_SuperBestON3 {
 
         int maxSum = 0;
         int ii = 0, jj = 0, kk = 0, ll =0;
-        int[][] preSum = new int[n][m+1];
-
-        for (int i = 0; i < n; i++) { // O(N*M)
-            for (int j = 0; j < m; j++) {
-                preSum[i][j+1] = preSum[i][j] + mat[i][j];
-            }
-        }
 
         for(int i = 0; i < m; i++) { // O(N*M^2)
+            int[] arr = new int[n];
             for(int j = i; j < m; j++) {
-                int[] arr = new int[n];
                 for (int k = 0; k < n; k++) {
-                    arr[k] = preSum[k][j+1] - preSum[k][i];
+                    arr[k] += mat[k][j];
                 }
                 int[] best = bestLinear(arr);
                 if(best[0] > maxSum) {
@@ -36,22 +29,13 @@ public class MSM_SuperBestON3 {
         return new int[] {maxSum, ii, jj, kk, ll};
     }
 
-    public static void printmat(int[][] mat) {
-        int n = mat.length, m = mat[0].length;
-        for(int i = 0 ; i < n ; i++) { // O(N*M)
-            for(int j = 0 ; j < m; j++) {
-                System.out.print(mat[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
 
-/*
-###########################################################################
-###########################################################################
-###########################################################################
-###########################################################################
- */
+    /*
+    ###########################################################################
+    ###########################################################################
+    ###########################################################################
+    ###########################################################################
+     */
     public static int[] bestLinear(int[] arr) {
         int maxSum = Integer.MIN_VALUE, tempSum = 0;
         int startIndex = 0, endIndex = 0, startTemp = 0;
