@@ -3,7 +3,7 @@
 ### Algorithm
 
 ```java
-Boruvka(G)
+Boruvka(G):
 
     for each v∈V(G) do: // O(|V|)
         MakeSet(v)
