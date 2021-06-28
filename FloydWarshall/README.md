@@ -6,16 +6,16 @@
 ```java
 FloydWarshall(mat[N,N]):
 
-for k ⇐ 0 to N do:
-  for i ⇐ 0 to N do:
-    for j ⇐ 0 to N do:
-      if mat[i,j] > mat[i,k]+mat[k,j] then:
-        mat[i,j] ⇐ mat[i,k] + mat[k,j]
-      end-if
-    end-for
-  end-for
-end-for
-
+	for k ⇐ 0 to N do:
+	  for i ⇐ 0 to N do:
+	    for j ⇐ 0 to N do:
+	      if mat[i,j] > mat[i,k]+mat[k,j] then:
+		mat[i,j] ⇐ mat[i,k] + mat[k,j]
+	      end-if
+	    end-for
+	  end-for
+	end-for
+end-FloydWarshall
 ```
 
 ### Check if graph is connected
@@ -23,66 +23,108 @@ end-for
 ```java
 IsGraphConnected(mat[N,N]):
 
-for k ⇐ 0 to N do:
-  for i ⇐ 0 to N do:
-    for j ⇐ 0 to N do:
-      if mat[i,j] > mat[i,k]+mat[k,j] then:
-        mat[i,j] ⇐ mat[i,k] + mat[k,j]
-      end-if
+	for k ⇐ 0 to N do:
+	  for i ⇐ 0 to N do:
+	    for j ⇐ 0 to N do:
+	      if mat[i,j] > mat[i,k]+mat[k,j] then:
+		mat[i,j] ⇐ mat[i,k] + mat[k,j]
+	      end-if
 
-for i ⇐ 0 to N do:
-  if mat[0,i] = ∞ then:
-    return False
-  end-if
+	for i ⇐ 0 to N do:
+	  if mat[0,i] = ∞ then:
+	    return False
+	  end-if
 
-return True
+	return True
+end-IsGraphConnected
 ```
 
 ### Number of components using Floyd Warshall
 ```java
 getNumberOfComponents(mat[N,N]):
 
-for k ⇐ 0 to N do:
-  for i ⇐ 0 to N do:
-    for j ⇐ 0 to N do:
-      if mat[i,j] > mat[i,k]+mat[k,j] then:
-         mat[i,j] ⇐ mat[i,k] + mat[k,j]
-      end-if
-end-3 for loops
 
-create comp[N]
-counter ⇐ 0
+	for k ⇐ 0 to N do:
+	  for i ⇐ 0 to N do:
+	    for j ⇐ 0 to N do:
+	      if mat[i,j] > mat[i,k]+mat[k,j] then:
+		  mat[i,j] ⇐ mat[i,k] + mat[k,j]
+	      end-if
+	    end-for
+	  end-for
+	end-for
 
-for i ⇐ 0 to N do:
-  comp[i] ⇐ 0
-end-for
+	create comp[N]
+	counter ⇐ 0
+
+	for i ⇐ 0 to N do:
+	  	comp[i] ⇐ 0
+	end-for
 
 
-for i ⇐ 0 to N do:
-  if comp[i] = 0 then: 
-    counter ⇐ counter + 1
-    comp[i] ⇐ counter
-    for j ⇐ 0 to N do:
-      if mat[i,j] != ∞ then:
-        comp[j] ⇐ counter
-      end-if
-    end-for
-  end-if
-end-for
+	for i ⇐ 0 to N do:
+	  if comp[i] = 0 then: 
+	    counter ⇐ counter + 1
+	    comp[i] ⇐ counter
+	    for j ⇐ 0 to N do:
+	      if mat[i,j] != ∞ then:
+		comp[j] ⇐ counter
+	      end-if
+	    end-for
+	  end-if
+	end-for
 
-return counter
+	return counter
+end-getNumberOfComponents
 ```
 
 ### Check if 2 nodes are on the same path
 ```java
 onSamePath(mat[N,N], src, dest):
 
-create comp[N] ⇐ getNumberOfComponents(mat)
+	create comp[N] ⇐ getComponents(mat)
 
-if comp[src] = comp[dest] then:
-  return True
-  
-return False
+	if comp[src] = comp[dest] then:
+	  	return True
+
+	return False
+
+end-onSamePath
+
+getComponents(mat[N,N]):
+
+	for k ⇐ 0 to N do:
+	  for i ⇐ 0 to N do:
+	    for j ⇐ 0 to N do:
+	      if mat[i,j] > mat[i,k]+mat[k,j] then:
+		mat[i,j] ⇐ mat[i,k] + mat[k,j]
+	      end-if
+	    end-for
+	  end-for
+	end-for
+
+	create comp[N]
+	counter ⇐ 0
+
+	for i ⇐ 0 to N do:
+	  	comp[i] ⇐ 0
+	end-for
+
+
+	for i ⇐ 0 to N do:
+	  if comp[i] = 0 then: 
+	    counter ⇐ counter + 1
+	    comp[i] ⇐ counter
+	    for j ⇐ 0 to N do:
+	      if mat[i,j] != ∞ then:
+		comp[j] ⇐ counter
+	      end-if
+	    end-for
+	  end-if
+	end-for
+
+	return comp[]
+end-getComponents
 ```
 
 ### Weights on the Vertices
