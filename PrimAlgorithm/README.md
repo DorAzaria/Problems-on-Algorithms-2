@@ -33,7 +33,7 @@ Prim(G): // O(|E|log|V|)
                     prev[v] ⇐ u
 
                     if Q.contains(v) then:
-                        Q.decreaseKey(v, minEdge[v])
+                        Q.decreaseKey( (v, minEdge[v]) )
                     else:
                         Q.add( (v, minEdge[v]) )
                     end-if
