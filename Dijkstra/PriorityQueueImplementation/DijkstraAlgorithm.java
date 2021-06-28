@@ -43,9 +43,9 @@ public class DijkstraAlgorithm {
                     if(newDistance < distances[neighbour.key]) {
                         distances[neighbour.key] = newDistance;
                         previous[neighbour.key] = current;
+                        priorityQueue.add(new Node(neighbour.key, distances[neighbour.key]));
                     }
 
-                    priorityQueue.add(new Node(neighbour.key, distances[neighbour.key]));
                 }
                 if(dest == current) break;
             }

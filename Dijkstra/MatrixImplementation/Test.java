@@ -26,13 +26,5 @@ public class Test {
                         };
         dijkstraMatrix.Dijkstra(matrix,0,6); // 16
 
-        int [][] Graph = {{inf, inf,3, inf, inf, inf},
-                {1,2,4, inf, inf, inf},
-                {inf, inf, inf,5,2, inf},
-                {inf, inf, inf, inf, inf,4},
-                {inf, inf, inf, inf, inf,4},
-                {inf, inf, inf, inf, inf, inf}};
-        dijkstraMatrix.Dijkstra(Graph,0,1000); // 16
-
     }
 }
