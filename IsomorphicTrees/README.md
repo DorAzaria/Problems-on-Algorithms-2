@@ -27,7 +27,6 @@ generateCode(T, root):
 end-generateCode
 
 getTraversalCode(T, current, tCode[|V(T)|], color[|V(T)|]):
-
     color[current] ⇐ BLACK
 
     if deg(current) = 1 then:
@@ -35,13 +34,12 @@ getTraversalCode(T, current, tCode[|V(T)|], color[|V(T)|]):
     else:
         for each v ∈ Adj(current) do:
             if color[v] = WHITE then:
-                color[current] ⇐ GRAY
                 getTraversalCode(T, v, tCode, color)
                 tCode[current] ⇐ tCode[current] + tCode[v]
             end-if
         end-for
 
-        tCode[current] ⇐ tCode[current] + 1
+        tCode[current] ⇐ tCode[current] + "1"
     end-if-else
 end-getTraversalCode
 
