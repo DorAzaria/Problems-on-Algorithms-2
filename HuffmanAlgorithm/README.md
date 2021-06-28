@@ -66,3 +66,20 @@ HuffmanUnsorted(A): // O(NlogN)
 	return root
 end-HuffmanUnsorted
 ```
+
+### Get Huffman Code (Recursive)
+```java
+getHuffmanCode(A):
+	root ⇐ Huffman(A)
+	HuffmanCode(root)
+end-getHuffmanCode
+
+HuffmanCode(root):
+	if root.left = NULL and root.right = NULL then:
+		print(root.char)
+	else:
+		print(“0” + HuffmanCode(root.left))
+		print(“1” + HuffmanCode(root.right))
+	end-if
+end-HuffmanCode
+```
