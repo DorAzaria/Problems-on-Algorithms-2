@@ -17,11 +17,13 @@ Kruskal(G): // O(|E|log|V|)
             T.add(e)
             Union(e.u, e.v) 
         end-if
-		if |T| = |V|-1 then:
-			return T
-		end-if
-	end-for
-	return T
+        if |T| = |V|-1 then:
+            return T
+        end-if
+    end-for
+    
+    return T
+    
 end-Kruskal
 
 MakeSet(v): // O(1)
