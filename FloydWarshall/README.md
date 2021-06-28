@@ -150,7 +150,7 @@ end-for
 
 for i ⇐ 0 to N do:
 	for j ⇐ 0 to N do:
-		if ij then:
+		if i≠j then:
 			mat[i,j] ⇐ (nodes[i]+mat[i,j]+nodes[j])/2
 		end-if 
 	end-for
@@ -181,7 +181,7 @@ end-for
 
 for i⇐ 0 to N do:
 	for j⇐ 0 to N do:
-		if ij then:
+		if i≠j then:
 			mat[i,j] ⇐ (nodes[i]+mat[i,j]+nodes[j])/2
 		end-if
 	end-for
