@@ -44,7 +44,7 @@ getTraversalCode(T, current, tCode[|V(T)|], color[|V(T)|]):
 end-getTraversalCode
 
 sortCodes(tCode[|V(T)|]):
-    Sort(tCode)
+    Sort(tCode) // O(NlogN)
     sortedCode ⇐ “”
     current ⇐ 1
     while current < |V(T)| and tCode[current] ≠ “01” do:
