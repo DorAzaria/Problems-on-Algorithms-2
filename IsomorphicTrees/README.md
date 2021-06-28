@@ -89,6 +89,7 @@ Fire(T):
                         u ⇐ Dequeue(Q)
                         nodes ⇐ nodes - 1
                         for each v∈Adj(u) do:
+				deg[v] ⇐ deg[v] - 1
                                 if deg[v]=1 then:
                                         Enqueue(Q,v)
                                 end-if 
