@@ -72,33 +72,33 @@ end-isIsomorphicWithoutRoot
 
 
 Fire(T):
-    create Queue Q ⇐ ∅
-    radius ⇐ 0
+        create Queue Q ⇐ ∅
+        create deg[|V(T)|]
 
-    for each v∈V[T] do:
-        if deg(v)=1 then:
-            Enqueue(Q,v)
-        end-if
-    end-for
-
-    nodes ⇐ |V[T]|
-    while nodes > 2 do:
-        radius ⇐ radius + 1
-        leaves ⇐ |Q|
-        for i⇐ 0 to leaves do:
-            u ⇐ Dequeue(Q)
-            v ⇐ {v|v∈Adj(u)}
-            Remove(T,u)
-            nodes ⇐ nodes - 1
-            if deg(v)=1 then:
-                Enqueue(Q,v)
-            end-if 
+        for each v∈V(T) do:
+                deg[v] ⇐ |Adj(v)|
+                if deg[v]=1 then:
+                        Enqueue(Q,v)
+                end-if
         end-for
-    end-while 
 
-    center_node ⇐ Dequeue(Q)
+        nodes ⇐ |V[T]|
+        while nodes > 2 do:
+                leaves ⇐ |Q|
+                for i⇐ 0 to leaves do:
+                        u ⇐ Dequeue(Q)
+                        nodes ⇐ nodes - 1
+                        for each v∈Adj(u) do:
+                                if deg(v)=1 then:
+                                        Enqueue(Q,v)
+                                end-if 
+                        end-for
+                end-for 
+        end-while 
+	
+	centerNode ⇐ Dequeue(Q)
 
-    return center_node
+        return centerNode
 
 end-Fire
 
