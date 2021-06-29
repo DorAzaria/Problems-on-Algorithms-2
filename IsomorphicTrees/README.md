@@ -16,14 +16,19 @@ isIsomorphic(T1, root1, T2, root2):
 end-isIsomorphic
 
 generateCode(T, root):
-    create traversalCode[|V(T)|]
+    create traversalCode[|V(T)|] // string array
     create color[|V(T)|]
+    
     for i⇐ 0 to |V(T)| do:
         traversalCode[i] ⇐ “0”
         color[i] ⇐ WHITE
     end-for
-    getTraversalCode(T, root1, traversalCode, color)
-    return sortCodes(traversalCode)
+    
+    getTraversalCode(T, root, traversalCode, color)
+    treeCode ⇐ sortCodes(traversalCode)
+    
+    return treeCode
+    
 end-generateCode
 
 getTraversalCode(T, current, tCode[|V(T)|], color[|V(T)|]):
@@ -32,11 +37,14 @@ getTraversalCode(T, current, tCode[|V(T)|], color[|V(T)|]):
     if deg(current) = 1 then:
         tCode[current] ⇐ “01”
     else:
+    
         for each v ∈ Adj(current) do:
+	
             if color[v] = WHITE then:
                 getTraversalCode(T, v, tCode, color)
                 tCode[current] ⇐ tCode[current] + tCode[v]
             end-if
+	    
         end-for
 
         tCode[current] ⇐ tCode[current] + "1"
@@ -47,6 +55,7 @@ sortCodes(tCode[|V(T)|]):
     Sort(tCode) // O(NlogN)
     sortedCode ⇐ “”
     current ⇐ 1
+    
     while current < |V(T)| and tCode[current] ≠ “01” do:
         sortedCode ⇐ sortedCode + tCode[current]
         current ⇐ current + 1
@@ -69,15 +78,20 @@ isIsomorphicWithoutRoot(T1, T2):
      if roots1.size() ≠ roots2.size() then:
           return false
      end-if
+     
+     r1 ⇐ Dequeue(roots1)
 
-     code1 ⇐ generateCode(T1, root1) // continue like the rooted-tree algorithm
+     code1 ⇐ generateCode(T1, r1) // continue like the rooted-tree algorithm
 
      while roots2 is not empty do:
+     
           r2 ⇐ Dequeue(roots2)
-          code2 ⇐ generateCode(T2, root2) // continue like the rooted-tree algorithm
+          code2 ⇐ generateCode(T2, r2) // continue like the rooted-tree algorithm
+	  
 	  if code1 = code2 then:
 	     return true
 	  end-if
+	  
      end-while
 
      return false
