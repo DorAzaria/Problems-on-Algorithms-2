@@ -1,6 +1,6 @@
 # Eulerian Graphs and Path
 
-# Algorithm O(|V|+|E|)
+### Algorithm O(|V|+|E|)
   works for both cases (paths or cycles) and return a List contain the the path/cycle by order.
   
   ```java
