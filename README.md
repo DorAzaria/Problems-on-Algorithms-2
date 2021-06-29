@@ -20,6 +20,6 @@
 |[Huffman Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/HuffmanAlgorithm) |![](https://latex.codecogs.com/gif.latex?%5Cinline%20O%28n%29) |
 |[Kruskal Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/KruskalAlgorithm) |![](https://latex.codecogs.com/gif.latex?%5Cinline%20O%28%7CE%7C%5Ccdot%20%5Clog%7CV%7C%29) |
 |[Prim Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/PrimAlgorithm) |![](https://latex.codecogs.com/gif.latex?%5Cinline%20O%28%7CE%7C%5Ccdot%20%5Clog%7CV%7C%29) |
-|[Euler Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/Euler) |![](https://latex.codecogs.com/gif.latex?%5Cinline%20O%28%7CV%7C%5Ccdot%20%7CE%7C%29)|
+|[Euler Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/Euler) |![](https://latex.codecogs.com/gif.latex?O%28%7CV%7C&plus;%7CE%7C%29)|
 |[Reverse-Kruskal Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/ReversedKruskal) | ![](https://latex.codecogs.com/gif.latex?O%28%7CE%7C%5Ccdot%20%28%7CV%7C&plus;%7CE%7C%29%29)|
 |[Boruvka Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/BoruvkaAlgorithm) | ![](https://latex.codecogs.com/gif.latex?O%28%7CE%7C%5Ccdot%20%5Clog%20%7CV%7C%29)|
