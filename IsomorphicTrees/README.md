@@ -65,6 +65,10 @@ isIsomorphicWithoutRoot(T1, T2):
 
      roots1 ⇐ Fire(T1)
      roots2 ⇐ Fire(T2)
+     
+     if roots1.size() ≠ roots2.size() then:
+          return false
+     end-if
 
      code1 ⇐ generateCode(T1, root1) // continue like the rooted-tree algorithm
 
