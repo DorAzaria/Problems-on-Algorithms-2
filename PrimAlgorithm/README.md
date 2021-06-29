@@ -3,47 +3,48 @@
 ### Algorithm
 
 ```java
-Prim(G): // O(|E|log|V|)
-    create PriorityQueue Q
-    create Tree T ⇐ ∅
-    create visit[|V(G)|]
-    create prev[|V(G)|]
-    create minEdge[|V(G)|]
 
-    for each v∈V(G) do: // O(|V|)
-        visit[v] ⇐ false
-        prev[v] ⇐ NIL
-        minEdge[v] ⇐ ∞
-    end-for
+Prim(G,root):
+	create Tree T ⇐ ∅
+	create PriorityQueue Q // Min-PriorityQueue key by key[v]
+	create key[|V(G)|]
+	create visited[|V(G)|]
+	create parent[|V(G)|]
+	numEdges ⇐ 0
 
-    minEdge[0] ⇐ 0
-    Q.add((0,0)) // (node ID, priority)
+	for each v∈V(G) do: // O(|V|)
+		key[v] ⇐ ∞
+		visited[v] ⇐ FALSE 
+		parent[v] ⇐ NIL
+	end-for
 
-    while Q is not empty do: // O(|E|log|V|)
-        u ⇐ Q.extractMin()
+	key[root] ⇐ 0
+	
+	Q ⇐ V(G) // fill (v,key[v])
+	
+	while (Q is not empty) and (numEdges < |V(G)| - 1) do:
+		
+		u ⇐ extractMin(Q)
+		
+		for each v∈Adj(u) do:
+			
+			if visited[v] = FALSE and key[v] > weight(v,u) then:
+				key[v] ⇐ weight(v,u)
+				parent[v] ⇐ u
+				decreaseKey(Q, v, weight(v,u) )
+			end-if 
+		end-for
+	
+		visited[u] ⇐ TRUE
+		x ⇐ getMin(Q)
+		T.add(parent[x], x)
+		numEdges ⇐ numEdges + 1
 
-        if prev[u] ≠ NULL then:
-            T.add( (u, prev[u]) )
-        end-if
+	end-while
+	
+	return T
 
-        for each v∈Adj(u) do:
-            if not visit[v] then:
-                if minEdge[v] > weight(u,v) then:
-                    minEdge[v] ⇐ weight(u,v)
-                    prev[v] ⇐ u
-
-                    if Q.contains(v) then:
-                        Q.decreaseKey( (v, minEdge[v]) )
-                    else:
-                        Q.add( (v, minEdge[v]) )
-                    end-if
-                end-if
-            end-if
-        end-for
-
-        visit[u] ⇐ true
-    end-while
-    return T
 end-Prim
+
 
 ```
