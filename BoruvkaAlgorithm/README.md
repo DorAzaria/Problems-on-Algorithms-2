@@ -3,47 +3,54 @@
 ### Algorithm
 
 ```java
-Boruvka(G):
+Boruvka(G)
 
-    for each v∈V(G) do: // O(|V|)
-        MakeSet(v)
-    end-for
+	for each v∈V(G) do: // O(|V|)
+		MakeSet(v)
+	end-for
 
-    create Tree T ⇐ ∅
-    isFinished ⇐ false
+	create Tree T ⇐ ∅
+	treeSize ⇐ 0
 
-    while is not isFinished do:
-      create cheapest[|V(G)|] // init to null
+	while treeSize < |V(G)|-1 do:
+		create Edge[|V(G)|] cheapest // init NULL
 
-      for i ⇐ 0 to |E| do:
-          e ⇐ E[i]
-          g1 ⇐ FindSet(e.v1)
-          g2 ⇐ FindSet(e.v2)
+		for each edge∈E(G) do:
+			root1 ⇐ FindSet(edge.v1)
+			root2 ⇐ FindSet(edge.v2)
 
-          if g1 ≠ g2 then:
-          
-              if e.weight < cheapest[g1].weight then:
-                  cheapest[g1] ⇐ e
-              end-if
+			if root1 ≠ root2 then:
 
-              if e.weight < cheapest[g2].weight then: 
-                  cheapest[g2] ⇐ e
-              end-if
+				if cheapest[root1] = NULL OR 
+				OR edge.weight < cheapest[root1].weight then:
 
-          end-if
-      end-for
+						cheapest[root1] ⇐ edge
+				end-if
 
-      isFinished ⇐ true
+				if cheapest[root2] = NULL OR 
+				OR edge.weight < cheapest[root2].weight then:
 
-      for i ⇐ 0 to |V| do:
-          if cheapest[i] ≠ NULL then:
-              T.add(cheapest[i])
-              Union(cheapest[i].v1, cheapest[i].v2)
-              isFinished  = false
-          end-if
-      end-for
-    end-while
-    return T
+					cheapest[root2] ⇐ edge
+				end-if
+			end-if
+		end-for
+
+		for each v∈V(G) do:
+			if cheapest[v] ≠ NULL then:
+				v1 ⇐ cheapest[v].v1()
+				v2 ⇐ cheapest[v].v2()
+
+				if FindSet(v1) ≠ FindSet(v2) then:
+					treeSize ⇐ treeSize + 1
+					edge ⇐ new Edge(v1, v2, cheapest[v].weight)
+					T.add(edge)
+					Union(v1,v2)
+				end-if
+			end-if
+		end-for
+	end-while
+
+	return T
 end-Boruvka
 
 MakeSet(v): // O(1)
@@ -61,7 +68,7 @@ end-FindSet
 Union(u,v): // O(log|V|)
 	uRoot ⇐ FindSet(u)
 	vRoot ⇐ FindSet(v)
-	
+
 	uRoot.parent ⇐ vRoot
 end-Union
 
