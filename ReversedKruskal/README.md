@@ -12,7 +12,7 @@ ReverseKruskal(G): // O(|E|*(|V|+|E|))
     create Tree T ⇐ ∅
 
     for each edge∈E(G) do: // O(|V|)
-        Enqueue(edge)
+        Enqueue(Q,edge)
         T.add(edge)
     end-for
 
