@@ -5,64 +5,64 @@
 ```java
 ReverseKruskal(G): // O(|E|*(|V|+|E|))
 
-  // sort E in descending order by edges weight (high to low).
+    // sort E in descending order by edges weight (high to low).
     Sort(E(G)) // O(|E|log|E|)
 
     create Queue Q ⇐ ∅
+    create Tree T ⇐ ∅
 
-  for each edge∈E(G) do: // O(|V|)
-      Enqueue(edge)
-  end-for
+    for each edge∈E(G) do: // O(|V|)
+        Enqueue(edge)
+        T.add(edge)
+    end-for
 
-    size ⇐ |E(G)|
+    size ⇐ |E(T)|
 
-  while size > |V| - 1 do:
-      edge ⇐ Dequeue(Q)
+    while size > |V(T)| - 1 do:
+        edge ⇐ Dequeue(Q)
 
-      if isBridge(G,edge) = false then:
-            Remove(G,edge)
+        if isBridge(T,edge) = false then:
+            Remove(T,edge)
             size ⇐ size - 1
-      end-if
-  end-while
+        end-if
+    end-while
 
-    return G
+    return T
 end-ReverseKruskal
 
-isBridge(G,edge): // O(|V|+|E|)
-    G’ ⇐ G-{edge}
+isBridge(T,edge): // O(|V|+|E|)
+    T’ ⇐ T-{edge}
 
-    if NumberOfConnectedComponents(G’) = 2 then:
+    if NumberOfConnectedComponents(T’) = 2 then:
         return true
     else:
         return false
 end-isBridge
 
-NumberOfConnectedComponents(G’): // O(|V|+|E|)
+NumberOfConnectedComponents(T’): // O(|V|+|E|)
     counter ⇐ 0
-    create color[|V(G’)|]
+    create color[|V(T’)|]
 
+    for each v∈V(T’) do: // O(|V|)
+        color[v] ⇐ WHITE
+    end-for
 
-  for each v∈V(G’) do: // O(|V|)
-      color[v] ⇐ WHITE
-  end-for
-
-  for each v∈V(G’) do: // O(|V|)
-      if color[v] = WHITE then:
-          counter ⇐ counter + 1
-          DFS_REC(G,v,color)
-      end-if
-  end-for
-
-  return counter
+    for each v∈V(T’) do: // O(|V|)
+        if color[v] = WHITE then:
+            counter ⇐ counter + 1
+            DFS_REC(T’,v,color)
+        end-if
+    end-for
+    return counter
 
 end-NumberOfConnectedComponents
 
-DFS_REC(G’,v, color[|V(G’)|): // O(|E| of this component)
+DFS_REC(T’,v, color[|V(T’)|): // O(|E| of this component)
     color[v] ⇐ GRAY 
 
     for each u∈Adj(v) do:
         if color[u] = WHITE then:
-            DFS_REC(G’,u,color)
+            DFS_REC(T’,u,color)
         end-if
     end-for
 
