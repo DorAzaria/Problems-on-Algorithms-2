@@ -48,7 +48,7 @@ bestCycle(arr[N]):
   create regular[3] ⇐ bestLinear(arr)
   cycle_sum ⇐ sum - (-negative[0])
 
-  if regular[0]  cycle_sum then:
+  if regular[0] ≥ cycle_sum then:
     return regular
   end-if 
 
