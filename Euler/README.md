@@ -6,7 +6,7 @@
   ```java
 getEuler(G):
     count ⇐  0
-    pathNode ⇐  1
+    pathNode ⇐  0
     cycleNode ⇐ 0
 
     for each v∈V(G) do:
