@@ -22,6 +22,7 @@ Fire(T):
                 for i⇐ 0 to leaves do:
                         u ⇐ Dequeue(Q)
                         nodes ⇐ nodes - 1
+                        deg[u] ⇐ 0
                         for each v∈Adj(u) do:
                         	deg[v] ⇐ deg[v] - 1
                                 if deg[v]=1 then:
