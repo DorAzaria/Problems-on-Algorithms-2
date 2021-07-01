@@ -10,9 +10,9 @@ Kruskal(G): // O(|E|log|V|)
     end-for
 
     // sort E in increasing order by edges weight
-    Sort(E(G)) // O(|E|log|E|)
+    Sort(E(G)) // O(|E|log|V|)
 
-    for each e∈E(G) do: // O(|E|log|V|)
+    for each e∈E(G) do: // O(|E|)
         if FindSet(e.u) ≠ FindSet(e.v) then:
             T.add(e)
             Union(e.u, e.v) 
