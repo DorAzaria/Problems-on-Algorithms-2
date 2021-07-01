@@ -24,20 +24,20 @@ Prim(G,root):
 	
 	while (Q is not empty) and (numEdges < |V(G)| - 1) do:
 		
-		u ⇐ extractMin(Q)
+		u ⇐ extractMin(Q) // O(log(n))
 		
 		for each v∈Adj(u) do:
 			
 			if visited[v] = FALSE and key[v] > weight(v,u) then:
 				key[v] ⇐ weight(v,u)
 				parent[v] ⇐ u
-				decreaseKey(Q, v, weight(v,u) )
+				decreaseKey(Q, v, weight(v,u) ) // O(log(n))
 			end-if 
 		end-for
 	
 		visited[u] ⇐ TRUE
 		x ⇐ getMin(Q)
-		T.add(parent[x], x)
+		T.add( (parent[x], x) ) // add the edge (parent[x], x) to the tree.
 		numEdges ⇐ numEdges + 1
 
 	end-while
