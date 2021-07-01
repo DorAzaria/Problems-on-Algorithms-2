@@ -26,7 +26,7 @@ GenerateTreeByDegrees(deg[N]):
     end-for
 
     create tree[N]
-    for i ⇐ 0 to N-1 do:
+    for i ⇐ 0 to N-2 do:
         tree[i] ⇐ j
         deg[j] ⇐ deg[j] - 1
 
