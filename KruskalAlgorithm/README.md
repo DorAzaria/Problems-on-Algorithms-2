@@ -15,7 +15,7 @@ Kruskal(G): // O(|E|log|V|)
     for each e∈E(G) do: // O(|E|)
         if FindSet(e.u) ≠ FindSet(e.v) then:
             T.add(e)
-            Union(e.u, e.v) 
+            Union(e.u, e.v) //𝑶(α(V)) ≅ 𝑶(𝟏)
         end-if
         if |E(T)| = |V(T)|-1 then:
             return T
@@ -30,7 +30,7 @@ MakeSet(v): // O(1)
     v.parent ⇐ v
 end-MakeSet
 
-FindSet(v): // O(log|V|)
+FindSet(v): //𝑶(α(V)) ≅ 𝑶(𝟏)
     if v = v.parent then:
         return v.parent
     else:
@@ -38,7 +38,7 @@ FindSet(v): // O(log|V|)
     end-if
 end-FindSet
 
-Union(u,v): // O(log|V|)
+Union(u,v): //𝑶(α(V)) ≅ 𝑶(𝟏)
     uRoot ⇐ FindSet(u)
     vRoot ⇐ FindSet(v)
     uRoot.parent ⇐ vRoot
