@@ -35,7 +35,7 @@ GenerateTreeByDegrees(deg[N]):
         end-if 
     end-for
 
-    tree[N-1] ⇐ N
+    tree[N-2] ⇐ N
     return tree
 
 end-GenerateTreeByDegrees
