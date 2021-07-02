@@ -23,7 +23,7 @@ getEuler(G):
         return NULL
     end-if
 
-    if isConnected(G,0) = TRUE then:
+    if isConnected(G,cycleNode) = TRUE then:
         if count = 2 then: // Eulerian Path
             return generateEuler(G,pathNode)
         end-if
