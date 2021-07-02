@@ -17,7 +17,7 @@ Kruskal(G): // O(|E|log|V|)
             T.add(e)
             Union(e.u, e.v) //𝑶(α(V)) ≅ 𝑶(𝟏)
         end-if
-        if |E(T)| = |V(T)|-1 then:
+        if |E(T)| = |V(G)|-1 then:
             return T
         end-if
     end-for
