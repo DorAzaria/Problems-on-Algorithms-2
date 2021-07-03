@@ -83,20 +83,15 @@ end-NumberOfComponents
 BFS_BIPARTITE(G,s):
     bipartite ⇐ true
     create color[|V(G)|]
-    create dist[|V(G)|]
-    create prev[|V(G)|]
     create partition[|V(G)|]
     create Queue Q ⇐ empty
 
     for each v∈V[G] do:
-        dist[v] ⇐ ∞
-        prev[v] ⇐ NIL
         color[v] ⇐ WHITE
         partition[v] ⇐ 0
     end-for
 
     color[s] ⇐ GRAY
-    dist[s] ⇐ 0
     partition[s] ⇐ 1
     Enqueue(Q,s)
 
@@ -107,8 +102,6 @@ BFS_BIPARTITE(G,s):
                 bipartite ⇐ false
             else if color[v] = WHITE then:
                 color[v] ⇐ GRAY
-                dist[v] ⇐ dist[u] + 1
-                prev[v] ⇐ u
                 Enqueue(Q,v)
                 partition[v] ⇐ 3 - partition[u]
             end-if
