@@ -13,7 +13,7 @@
 |[BFS](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/BFS) | ![](https://latex.codecogs.com/gif.latex?%5Cinline%20O%28%7CV%7C&plus;%7CE%7C%29) |
 |[Bipartite Graphs](https://github.com/DorAzaria/Problems-on-Algorithms-2/blob/main/BFS/BipartiteGraph.java) |![](https://latex.codecogs.com/gif.latex?%5Cinline%20O%28%7CV%7C&plus;%7CE%7C%29) |
 |[Diameter of A Graph](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/DiameterOfAGraph) |![](https://latex.codecogs.com/gif.latex?%5Cinline%20O%28%7CV%7C&plus;%7CE%7C%29) |
-|[Fire Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/Fire) |![](https://latex.codecogs.com/gif.latex?%5Cinline%20O%28n%29) |
+|[Fire Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/Fire) |![](https://latex.codecogs.com/gif.latex?%5Cinline%20O%28%7CV%7C&plus;%7CE%7C%29) |
 |[DFS Algorithm](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/DFS) |![](https://latex.codecogs.com/gif.latex?%5Cinline%20O%28%7CV%7C&plus;%7CE%7C%29)  |
 |[Generate Tree By a Given Degree Series](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/BuildTreeFromDegrees) |![](https://latex.codecogs.com/gif.latex?%5Cinline%20O%28N%5Ccdot%20%5Clog%28N%29%29) |
 |[Isomorphic Trees](https://github.com/DorAzaria/Problems-on-Algorithms-2/tree/main/IsomorphicTrees) |![](https://latex.codecogs.com/gif.latex?%5Cinline%20O%28N%5Ccdot%20%5Clog%28N%29%29) |
