@@ -5,64 +5,50 @@ This is my implementation, if there are any mistakes here it is **your responsib
 ### Algorithm for rooted Tree
 Works only if we know the root of each tree
 ```java
-isIsomorphic(T1, root1, T2, root2):
-    code1 ⇐ generateCode(T1, root1)
-    code2 ⇐ generateCode(T2, root2)
+isIsomorphic(T1, r1, T2, r2):
 
-    if code1 = code2 then:
-        return true
-    else:
-        return false
+	if |V1(T1)| ≠ |V2(T2)| then:
+		return false
+	end-if
+	
+	generateCodes(T1, r1)
+	generateCodes(T2, r2)
+	
+	if r1.code = r2.code then:
+		return true
+	else:
+		return false
+	end-if
+
 end-isIsomorphic
 
-generateCode(T, root):
-    create traversalCode[|V(T)|] // string array
-    create color[|V(T)|]
-    
-    for i⇐ 0 to |V(T)| do:
-        traversalCode[i] ⇐ “0”
-        color[i] ⇐ WHITE
-    end-for
-    
-    getTraversalCode(T, root, traversalCode, color)
-    treeCode ⇐ sortCodes(traversalCode)
-    
-    return treeCode
-    
-end-generateCode
-
-getTraversalCode(T, current, tCode[|V(T)|], color[|V(T)|]):
-    color[current] ⇐ BLACK
-
-    if deg(current) = 1 then:
-        tCode[current] ⇐ “01”
-    else:
-    
-        for each v ∈ Adj(current) do:
 	
-            if color[v] = WHITE then:
-                getTraversalCode(T, v, tCode, color)
-                tCode[current] ⇐ tCode[current] + tCode[v]
-            end-if
-	    
-        end-for
+generateCodes(T, v):
+	
+	v.color ⇐ BLACK
+	Queue childCodes ⇐ ∅
 
-        tCode[current] ⇐ tCode[current] + "1"
-    end-if-else
-end-getTraversalCode
+	if deg(v) = 1 then: // if v is leaf
+		v.code ⇐ “10”
+	else:
+		for each u ∈ Adj(v) do:
+			if u.color = WHITE then:
+				generateCodes(T,u)
+				Enqueue(childCodes, u.code)
+			End-if
+		end-for
+	end-if
+	
+	Sort( childCodes ) // sort the children codes of v by codes
 
-sortCodes(tCode[|V(T)|]):
-    Sort(tCode) // O(NlogN)
-    sortedCode ⇐ “”
-    current ⇐ 1
-    
-    while current < |V(T)| and tCode[current] ≠ “01” do:
-        sortedCode ⇐ sortedCode + tCode[current]
-        current ⇐ current + 1
-    end-while
+	temp ⇐ “”
+	while childCodes is not empty do:
+		temp ⇐ temp + Dequeue(childCodes)
+	end-while
 
-    return sortedCode
-end-sortCodes
+	v.code ⇐ “1” + temp + “0”
+
+end-generateCodes
 
 ```
 
